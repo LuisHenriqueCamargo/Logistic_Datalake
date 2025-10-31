@@ -1,0 +1,52 @@
+[2025-10-31T12:42:12.042+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T12:42:12.064+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T12:42:12.076+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T12:42:12.078+0000] {taskinstance.py:2884} INFO - Starting attempt 2 of 2
+[2025-10-31T12:42:12.096+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 00:00:00+00:00
+[2025-10-31T12:42:12.104+0000] {standard_task_runner.py:72} INFO - Started process 318 to run task
+[2025-10-31T12:42:12.110+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'scheduled__2025-10-30T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/Telemetria_Funcional.py', '--cfg-path', '/tmp/tmpcq1c5jkz']
+[2025-10-31T12:42:12.114+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask gerar_bruto
+[2025-10-31T12:42:12.217+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [running]> on host b523f962759e
+[2025-10-31T12:42:12.313+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T00:00:00+00:00'
+[2025-10-31T12:42:12.316+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T12:42:12.363+0000] {Telemetria_Funcional.py:56} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas robustas) ---
+[2025-10-31T12:42:12.365+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T12:42:12.711+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T12:42:12.732+0000] {Telemetria_Funcional.py:94} INFO - Gerados 200 registros logísticos robustos.
+[2025-10-31T12:42:12.737+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T12:42:12.755+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T12:42:12.758+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T12:42:12.826+0000] {s3_utils.py:69} INFO - Upload bem-sucedido: s3://datalake/raw/telemetry_20251031124212_9889a101-7823-4f73-b47d-c703cf20e197.json
+[2025-10-31T12:42:12.828+0000] {Telemetria_Funcional.py:109} INFO - Upload bem-sucedido: s3://datalake/raw/telemetry_20251031124212_9889a101-7823-4f73-b47d-c703cf20e197.json
+[2025-10-31T12:42:12.830+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-10-31T12:42:12.844+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T12:42:12.846+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=scheduled__2025-10-30T00:00:00+00:00, execution_date=20251030T000000, start_date=20251031T124212, end_date=20251031T124212
+[2025-10-31T12:42:12.889+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-31T12:42:12.908+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T12:42:12.914+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-10-31T13:29:14.685+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T13:29:14.709+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T13:29:14.721+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T13:29:14.723+0000] {taskinstance.py:2884} INFO - Starting attempt 2 of 2
+[2025-10-31T13:29:14.742+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 00:00:00+00:00
+[2025-10-31T13:29:14.751+0000] {standard_task_runner.py:72} INFO - Started process 244 to run task
+[2025-10-31T13:29:14.757+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'scheduled__2025-10-30T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/raw_ingestion_dag.py', '--cfg-path', '/tmp/tmp39az0i0p']
+[2025-10-31T13:29:14.762+0000] {standard_task_runner.py:105} INFO - Job 6: Subtask gerar_bruto
+[2025-10-31T13:29:14.858+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [running]> on host cb0bda40d6ad
+[2025-10-31T13:29:14.999+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T00:00:00+00:00'
+[2025-10-31T13:29:15.003+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T13:29:15.023+0000] {raw_ingestion_dag.py:57} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas de Sorter/AWB) ---
+[2025-10-31T13:29:15.024+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T13:29:16.210+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T13:29:16.234+0000] {raw_ingestion_dag.py:102} INFO - Gerados 200 registros de Sorter/AWB robustos.
+[2025-10-31T13:29:16.241+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T13:29:16.265+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T13:29:16.268+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T13:29:16.326+0000] {s3_utils.py:69} INFO - Upload bem-sucedido: s3://datalake/raw/awb_sortation_20251031132916_9a338ac9-e6a4-4aa6-99b5-dba34f964c64.json
+[2025-10-31T13:29:16.328+0000] {raw_ingestion_dag.py:118} INFO - Upload bem-sucedido: s3://datalake/raw/awb_sortation_20251031132916_9a338ac9-e6a4-4aa6-99b5-dba34f964c64.json
+[2025-10-31T13:29:16.330+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-10-31T13:29:16.374+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T13:29:16.376+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=scheduled__2025-10-30T00:00:00+00:00, execution_date=20251030T000000, start_date=20251031T132914, end_date=20251031T132916
+[2025-10-31T13:29:16.464+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-31T13:29:16.487+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T13:29:16.492+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

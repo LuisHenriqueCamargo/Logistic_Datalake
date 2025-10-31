@@ -1,0 +1,26 @@
+[2025-10-31T17:05:10.322+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T17:05:10.354+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto manual__2025-10-31T17:05:08.248919+00:00 [queued]>
+[2025-10-31T17:05:10.373+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto manual__2025-10-31T17:05:08.248919+00:00 [queued]>
+[2025-10-31T17:05:10.375+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-31T17:05:10.403+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-31 17:05:08.248919+00:00
+[2025-10-31T17:05:10.415+0000] {standard_task_runner.py:72} INFO - Started process 454 to run task
+[2025-10-31T17:05:10.423+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'manual__2025-10-31T17:05:08.248919+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/raw_ingestion_dag.py', '--cfg-path', '/tmp/tmpwpldp6pz']
+[2025-10-31T17:05:10.429+0000] {standard_task_runner.py:105} INFO - Job 32: Subtask gerar_bruto
+[2025-10-31T17:05:10.560+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto manual__2025-10-31T17:05:08.248919+00:00 [running]> on host a237e306ed53
+[2025-10-31T17:05:10.683+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-31T17:05:08.248919+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-31T17:05:08.248919+00:00'
+[2025-10-31T17:05:10.686+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T17:05:10.705+0000] {raw_ingestion_dag.py:57} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas de Sorter/AWB) ---
+[2025-10-31T17:05:10.706+0000] {s3_utils.py:25} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T17:05:11.147+0000] {s3_utils.py:44} INFO - Bucket 'datalake' já existe.
+[2025-10-31T17:05:11.166+0000] {raw_ingestion_dag.py:102} INFO - Gerados 200 registros de Sorter/AWB robustos.
+[2025-10-31T17:05:11.171+0000] {s3_utils.py:25} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T17:05:11.187+0000] {s3_utils.py:44} INFO - Bucket 'datalake' já existe.
+[2025-10-31T17:05:11.190+0000] {s3_utils.py:25} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T17:05:11.250+0000] {s3_utils.py:73} INFO - Upload bem-sucedido: s3://datalake/raw/awb_sortation_20251031170511_1d6f5a6e-a1bb-43cf-905a-ec89096770c3.json
+[2025-10-31T17:05:11.253+0000] {raw_ingestion_dag.py:118} INFO - Upload bem-sucedido: s3://datalake/raw/awb_sortation_20251031170511_1d6f5a6e-a1bb-43cf-905a-ec89096770c3.json
+[2025-10-31T17:05:11.256+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-10-31T17:05:11.273+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T17:05:11.276+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=manual__2025-10-31T17:05:08.248919+00:00, execution_date=20251031T170508, start_date=20251031T170510, end_date=20251031T170511
+[2025-10-31T17:05:11.365+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-31T17:05:11.402+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T17:05:11.414+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

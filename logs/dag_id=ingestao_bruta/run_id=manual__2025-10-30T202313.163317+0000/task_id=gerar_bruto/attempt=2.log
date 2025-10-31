@@ -1,0 +1,139 @@
+[2025-10-30T20:24:17.471+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-30T20:24:17.492+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto manual__2025-10-30T20:23:13.163317+00:00 [queued]>
+[2025-10-30T20:24:17.502+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto manual__2025-10-30T20:23:13.163317+00:00 [queued]>
+[2025-10-30T20:24:17.504+0000] {taskinstance.py:2884} INFO - Starting attempt 2 of 2
+[2025-10-30T20:24:17.519+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 20:23:13.163317+00:00
+[2025-10-30T20:24:17.525+0000] {standard_task_runner.py:72} INFO - Started process 343 to run task
+[2025-10-30T20:24:17.530+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'manual__2025-10-30T20:23:13.163317+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/raw_ingestion_dag.py', '--cfg-path', '/tmp/tmpiqw7olig']
+[2025-10-30T20:24:17.535+0000] {standard_task_runner.py:105} INFO - Job 9: Subtask gerar_bruto
+[2025-10-30T20:24:17.613+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto manual__2025-10-30T20:23:13.163317+00:00 [running]> on host 17d391076ddc
+[2025-10-30T20:24:17.711+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T20:23:13.163317+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-30T20:23:13.163317+00:00'
+[2025-10-30T20:24:17.713+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-30T20:24:17.728+0000] {raw_ingestion_dag.py:36} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas robustas) ---
+[2025-10-30T20:24:17.730+0000] {s3_utils.py:20} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-30T20:24:19.525+0000] {s3_utils.py:38} INFO - Bucket 'datalake' já existe.
+[2025-10-30T20:24:19.550+0000] {raw_ingestion_dag.py:81} INFO - Gerados 200 registros logísticos robustos.
+[2025-10-30T20:24:19.552+0000] {raw_ingestion_dag.py:98} ERROR - Falha CRÍTICA durante o upload para MinIO: Object of type Decimal is not JSON serializable
+[2025-10-30T20:24:19.554+0000] {taskinstance.py:3336} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 99, in generate_and_upload_raw_data
+    raise e
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 86, in generate_and_upload_raw_data
+    json_lines = "\n".join([json.dumps(r) for r in records])
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 86, in <listcomp>
+    json_lines = "\n".join([json.dumps(r) for r in records])
+                            ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Decimal is not JSON serializable
+[2025-10-30T20:24:19.615+0000] {taskinstance.py:1242} INFO - Marking task as FAILED. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=manual__2025-10-30T20:23:13.163317+00:00, execution_date=20251030T202313, start_date=20251030T202417, end_date=20251030T202419
+[2025-10-30T20:24:19.698+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-30T20:24:19.700+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 9 for task gerar_bruto (Object of type Decimal is not JSON serializable; 343)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3029, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 282, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3184, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3208, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 99, in generate_and_upload_raw_data
+    raise e
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 86, in generate_and_upload_raw_data
+    json_lines = "\n".join([json.dumps(r) for r in records])
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 86, in <listcomp>
+    json_lines = "\n".join([json.dumps(r) for r in records])
+                            ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Decimal is not JSON serializable
+[2025-10-30T20:24:19.753+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-10-30T20:24:19.781+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-30T20:24:19.790+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

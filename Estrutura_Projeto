@@ -1,0 +1,15 @@
+.
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── dags/
+│   ├── raw_ingestion_dag.py
+│   ├── bronze_processing_dag.py
+│   └── silver_gold_dag.py
+├── scripts/
+│   ├── etl_raw.py
+│   ├── etl_bronze.py
+│   ├── etl_silver_gold.py
+│   └── s3_utils.py
+├── data/
+└── logs/

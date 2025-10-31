@@ -1,0 +1,368 @@
+[2025-10-31T10:59:58.680+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T10:59:58.716+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T10:59:58.733+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T10:59:58.735+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-31T10:59:58.769+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 00:00:00+00:00
+[2025-10-31T10:59:58.781+0000] {standard_task_runner.py:72} INFO - Started process 205 to run task
+[2025-10-31T10:59:58.789+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'scheduled__2025-10-30T00:00:00+00:00', '--job-id', '41', '--raw', '--subdir', 'DAGS_FOLDER/raw_ingestion_dag.py', '--cfg-path', '/tmp/tmpkd__qsu2']
+[2025-10-31T10:59:58.796+0000] {standard_task_runner.py:105} INFO - Job 41: Subtask gerar_bruto
+[2025-10-31T10:59:58.917+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [running]> on host 743330a29803
+[2025-10-31T10:59:59.064+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T00:00:00+00:00'
+[2025-10-31T10:59:59.070+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T10:59:59.094+0000] {raw_ingestion_dag.py:56} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas robustas) ---
+[2025-10-31T10:59:59.097+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T11:00:01.406+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T11:00:01.430+0000] {raw_ingestion_dag.py:94} INFO - Gerados 200 registros logísticos robustos.
+[2025-10-31T11:00:01.435+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T11:00:01.453+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T11:00:01.456+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T11:00:01.513+0000] {s3_utils.py:69} INFO - Upload bem-sucedido: s3://datalake/raw/telemetry_20251031110001_ddf06287-c32c-46a7-9c95-13efd34a3dd0.json
+[2025-10-31T11:00:01.517+0000] {raw_ingestion_dag.py:109} INFO - Upload bem-sucedido: s3://datalake/raw/telemetry_20251031110001_ddf06287-c32c-46a7-9c95-13efd34a3dd0.json
+[2025-10-31T11:00:01.523+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-10-31T11:00:01.560+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T11:00:01.562+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=scheduled__2025-10-30T00:00:00+00:00, execution_date=20251030T000000, start_date=20251031T105958, end_date=20251031T110001
+[2025-10-31T11:00:01.744+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-31T11:00:01.786+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T11:00:01.791+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-10-31T12:41:04.239+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T12:41:04.298+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T12:41:04.330+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T12:41:04.331+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-31T12:41:04.374+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 00:00:00+00:00
+[2025-10-31T12:41:04.392+0000] {standard_task_runner.py:72} INFO - Started process 253 to run task
+[2025-10-31T12:41:04.431+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'scheduled__2025-10-30T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/raw_ingestion_dag.py', '--cfg-path', '/tmp/tmpbk_918im']
+[2025-10-31T12:41:04.476+0000] {standard_task_runner.py:105} INFO - Job 2: Subtask gerar_bruto
+[2025-10-31T12:41:05.139+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [running]> on host b523f962759e
+[2025-10-31T12:41:05.698+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T00:00:00+00:00'
+[2025-10-31T12:41:05.715+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T12:41:05.884+0000] {raw_ingestion_dag.py:57} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas de Sorter/AWB) ---
+[2025-10-31T12:41:05.887+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T12:41:10.144+0000] {s3_utils.py:50} ERROR - Falha ao criar bucket 'datalake': An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.
+[2025-10-31T12:41:10.147+0000] {taskinstance.py:3336} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/s3_utils.py", line 39, in ensure_bucket
+    s3.head_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadBucket operation: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 60, in generate_and_upload_raw_data
+    ensure_bucket(BUCKET)
+  File "/opt/airflow/scripts/s3_utils.py", line 51, in ensure_bucket
+    raise e_create
+  File "/opt/airflow/scripts/s3_utils.py", line 46, in ensure_bucket
+    s3.create_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.BucketAlreadyOwnedByYou: An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.
+[2025-10-31T12:41:10.297+0000] {taskinstance.py:1242} INFO - Marking task as UP_FOR_RETRY. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=scheduled__2025-10-30T00:00:00+00:00, execution_date=20251030T000000, start_date=20251031T124104, end_date=20251031T124110
+[2025-10-31T12:41:10.379+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T12:41:10.381+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 2 for task gerar_bruto (An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.; 253)
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/s3_utils.py", line 39, in ensure_bucket
+    s3.head_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadBucket operation: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3029, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 282, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3184, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3208, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 60, in generate_and_upload_raw_data
+    ensure_bucket(BUCKET)
+  File "/opt/airflow/scripts/s3_utils.py", line 51, in ensure_bucket
+    raise e_create
+  File "/opt/airflow/scripts/s3_utils.py", line 46, in ensure_bucket
+    s3.create_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.BucketAlreadyOwnedByYou: An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.
+[2025-10-31T12:41:10.441+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-10-31T12:41:10.480+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T12:41:10.485+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-10-31T13:17:45.433+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T13:17:45.454+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T13:17:45.465+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T13:17:45.466+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-31T13:17:45.482+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 00:00:00+00:00
+[2025-10-31T13:17:45.490+0000] {standard_task_runner.py:72} INFO - Started process 212 to run task
+[2025-10-31T13:17:45.495+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'scheduled__2025-10-30T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/Telemetria_Funcional.py', '--cfg-path', '/tmp/tmpcu0frm3c']
+[2025-10-31T13:17:45.500+0000] {standard_task_runner.py:105} INFO - Job 2: Subtask gerar_bruto
+[2025-10-31T13:17:45.658+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [running]> on host 7f46d4a9ea47
+[2025-10-31T13:17:45.790+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T00:00:00+00:00'
+[2025-10-31T13:17:45.792+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T13:17:45.819+0000] {Telemetria_Funcional.py:56} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas robustas) ---
+[2025-10-31T13:17:45.821+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T13:17:47.542+0000] {s3_utils.py:47} INFO - Bucket 'datalake' criado com sucesso.
+[2025-10-31T13:17:47.565+0000] {Telemetria_Funcional.py:94} INFO - Gerados 200 registros logísticos robustos.
+[2025-10-31T13:17:47.569+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T13:17:47.582+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T13:17:47.583+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T13:17:47.623+0000] {s3_utils.py:69} INFO - Upload bem-sucedido: s3://datalake/raw/telemetry_20251031131747_947e5cd3-4397-4947-89e8-66fca8e2be86.json
+[2025-10-31T13:17:47.627+0000] {Telemetria_Funcional.py:109} INFO - Upload bem-sucedido: s3://datalake/raw/telemetry_20251031131747_947e5cd3-4397-4947-89e8-66fca8e2be86.json
+[2025-10-31T13:17:47.629+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-10-31T13:17:47.646+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T13:17:47.648+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=scheduled__2025-10-30T00:00:00+00:00, execution_date=20251030T000000, start_date=20251031T131745, end_date=20251031T131747
+[2025-10-31T13:17:47.721+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-31T13:17:47.742+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T13:17:47.745+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-10-31T13:28:07.453+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T13:28:07.496+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T13:28:07.524+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T13:28:07.526+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-31T13:28:07.556+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 00:00:00+00:00
+[2025-10-31T13:28:07.571+0000] {standard_task_runner.py:72} INFO - Started process 203 to run task
+[2025-10-31T13:28:07.601+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'scheduled__2025-10-30T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/raw_ingestion_dag.py', '--cfg-path', '/tmp/tmpa68_1rvg']
+[2025-10-31T13:28:07.618+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask gerar_bruto
+[2025-10-31T13:28:07.922+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [running]> on host cb0bda40d6ad
+[2025-10-31T13:28:08.148+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T00:00:00+00:00'
+[2025-10-31T13:28:08.155+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T13:28:08.218+0000] {raw_ingestion_dag.py:57} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas de Sorter/AWB) ---
+[2025-10-31T13:28:08.219+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T13:28:12.280+0000] {s3_utils.py:50} ERROR - Falha ao criar bucket 'datalake': An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.
+[2025-10-31T13:28:12.282+0000] {taskinstance.py:3336} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/s3_utils.py", line 39, in ensure_bucket
+    s3.head_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadBucket operation: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 60, in generate_and_upload_raw_data
+    ensure_bucket(BUCKET)
+  File "/opt/airflow/scripts/s3_utils.py", line 51, in ensure_bucket
+    raise e_create
+  File "/opt/airflow/scripts/s3_utils.py", line 46, in ensure_bucket
+    s3.create_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.BucketAlreadyOwnedByYou: An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.
+[2025-10-31T13:28:12.332+0000] {taskinstance.py:1242} INFO - Marking task as UP_FOR_RETRY. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=scheduled__2025-10-30T00:00:00+00:00, execution_date=20251030T000000, start_date=20251031T132807, end_date=20251031T132812
+[2025-10-31T13:28:12.387+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T13:28:12.389+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 3 for task gerar_bruto (An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.; 203)
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/s3_utils.py", line 39, in ensure_bucket
+    s3.head_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadBucket operation: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3029, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 282, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3184, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3208, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/raw_ingestion_dag.py", line 60, in generate_and_upload_raw_data
+    ensure_bucket(BUCKET)
+  File "/opt/airflow/scripts/s3_utils.py", line 51, in ensure_bucket
+    raise e_create
+  File "/opt/airflow/scripts/s3_utils.py", line 46, in ensure_bucket
+    s3.create_bucket(Bucket=bucket)
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/botocore/client.py", line 1017, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.BucketAlreadyOwnedByYou: An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.
+[2025-10-31T13:28:12.449+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-10-31T13:28:12.488+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T13:28:12.495+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-10-31T15:51:20.389+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T15:51:20.411+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T15:51:20.421+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [queued]>
+[2025-10-31T15:51:20.422+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-31T15:51:20.438+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): gerar_bruto> on 2025-10-30 00:00:00+00:00
+[2025-10-31T15:51:20.445+0000] {standard_task_runner.py:72} INFO - Started process 265 to run task
+[2025-10-31T15:51:20.451+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'ingestao_bruta', 'gerar_bruto', 'scheduled__2025-10-30T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/raw_ingestion_dag.py', '--cfg-path', '/tmp/tmph38nppw7']
+[2025-10-31T15:51:20.455+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask gerar_bruto
+[2025-10-31T15:51:20.553+0000] {task_command.py:467} INFO - Running <TaskInstance: ingestao_bruta.gerar_bruto scheduled__2025-10-30T00:00:00+00:00 [running]> on host 2c900c7bed3b
+[2025-10-31T15:51:20.671+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='ingestao_bruta' AIRFLOW_CTX_TASK_ID='gerar_bruto' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T00:00:00+00:00'
+[2025-10-31T15:51:20.673+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T15:51:20.702+0000] {raw_ingestion_dag.py:57} INFO - --- Iniciando a Tarefa de Ingestão Bruta (200 linhas de Sorter/AWB) ---
+[2025-10-31T15:51:20.705+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T15:51:24.082+0000] {s3_utils.py:47} INFO - Bucket 'datalake' criado com sucesso.
+[2025-10-31T15:51:24.095+0000] {raw_ingestion_dag.py:102} INFO - Gerados 200 registros de Sorter/AWB robustos.
+[2025-10-31T15:51:24.099+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T15:51:24.112+0000] {s3_utils.py:40} INFO - Bucket 'datalake' já existe.
+[2025-10-31T15:51:24.114+0000] {s3_utils.py:21} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T15:51:24.152+0000] {s3_utils.py:69} INFO - Upload bem-sucedido: s3://datalake/raw/awb_sortation_20251031155124_d0ef2fec-fd57-45f3-b15b-f7a2dc36c692.json
+[2025-10-31T15:51:24.154+0000] {raw_ingestion_dag.py:118} INFO - Upload bem-sucedido: s3://datalake/raw/awb_sortation_20251031155124_d0ef2fec-fd57-45f3-b15b-f7a2dc36c692.json
+[2025-10-31T15:51:24.155+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-10-31T15:51:24.180+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T15:51:24.182+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=ingestao_bruta, task_id=gerar_bruto, run_id=scheduled__2025-10-30T00:00:00+00:00, execution_date=20251030T000000, start_date=20251031T155120, end_date=20251031T155124
+[2025-10-31T15:51:24.289+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-31T15:51:24.309+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T15:51:24.316+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

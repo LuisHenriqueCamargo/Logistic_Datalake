@@ -1,0 +1,184 @@
+[2025-10-30T20:47:41.361+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-30T20:47:41.386+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bronze_processing.wait_for_raw_ingestion manual__2025-10-30T20:47:39.925412+00:00 [queued]>
+[2025-10-30T20:47:41.396+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bronze_processing.wait_for_raw_ingestion manual__2025-10-30T20:47:39.925412+00:00 [queued]>
+[2025-10-30T20:47:41.398+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-30T20:47:41.412+0000] {taskinstance.py:2907} INFO - Executing <Task(ExternalTaskSensor): wait_for_raw_ingestion> on 2025-10-30 20:47:39.925412+00:00
+[2025-10-30T20:47:41.418+0000] {standard_task_runner.py:72} INFO - Started process 226 to run task
+[2025-10-30T20:47:41.422+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'bronze_processing', 'wait_for_raw_ingestion', 'manual__2025-10-30T20:47:39.925412+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/bronze_processing_dag.py', '--cfg-path', '/tmp/tmpuwwwmfz1']
+[2025-10-30T20:47:41.426+0000] {standard_task_runner.py:105} INFO - Job 20: Subtask wait_for_raw_ingestion
+[2025-10-30T20:47:41.517+0000] {task_command.py:467} INFO - Running <TaskInstance: bronze_processing.wait_for_raw_ingestion manual__2025-10-30T20:47:39.925412+00:00 [running]> on host 6b91c6a0e539
+[2025-10-30T20:47:41.604+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='bronze_processing' AIRFLOW_CTX_TASK_ID='wait_for_raw_ingestion' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T20:47:39.925412+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-30T20:47:39.925412+00:00'
+[2025-10-30T20:47:41.606+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-30T20:47:41.620+0000] {baseoperator.py:423} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-10-30T20:47:41.622+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:47:41.625+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py:97 DeprecationWarning: This method is deprecated and will be removed in future.
+[2025-10-30T20:48:41.634+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:49:41.648+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:50:41.697+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:51:41.715+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:52:41.739+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:53:41.764+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:54:41.791+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:55:41.816+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:56:41.842+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:57:41.856+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:58:41.873+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T20:59:41.892+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T21:00:41.913+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T21:01:41.938+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T21:02:41.952+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T21:03:41.969+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T21:04:41.997+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T21:05:42.018+0000] {external_task.py:258} INFO - Poking for tasks ['generate_raw'] in dag raw_ingestion on 2025-10-30T20:47:39.925412+00:00 ... 
+[2025-10-30T21:05:45.061+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-10-30T21:05:45.481+0000] {process_utils.py:132} INFO - Sending 15 to group 226. PIDs of all processes in the group: [226]
+[2025-10-30T21:05:45.490+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 226
+[2025-10-30T21:05:45.507+0000] {taskinstance.py:3117} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-10-30T21:05:45.975+0000] {taskinstance.py:3118} ERROR - Stacktrace: 
+  File "/home/airflow/.local/bin/airflow", line 7, in <module>
+    sys.exit(main())
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/__main__.py", line 62, in main
+    args.func(args)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/providers_configuration_loader.py", line 55, in wrapped_function
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/scheduler_command.py", line 56, in scheduler
+    run_command_with_daemon_option(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/daemon_utils.py", line 86, in run_command_with_daemon_option
+    callback()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/scheduler_command.py", line 59, in <lambda>
+    callback=lambda: _run_scheduler_job(args),
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/scheduler_command.py", line 47, in _run_scheduler_job
+    run_job(job=job_runner.job, execute_callable=job_runner._execute)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/jobs/job.py", line 421, in run_job
+    return execute_job(job, execute_callable=execute_callable)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/jobs/job.py", line 450, in execute_job
+    ret = execute_callable()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/jobs/scheduler_job_runner.py", line 990, in _execute
+    executor.start()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/executors/local_executor.py", line 392, in start
+    self.impl.start()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/executors/local_executor.py", line 330, in start
+    worker.start()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+  File "/usr/local/lib/python3.11/multiprocessing/context.py", line 224, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+  File "/usr/local/lib/python3.11/multiprocessing/context.py", line 281, in _Popen
+    return Popen(process_obj)
+  File "/usr/local/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/usr/local/lib/python3.11/multiprocessing/popen_fork.py", line 71, in _launch
+    code = process_obj._bootstrap(parent_sentinel=child_r)
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/executors/local_executor.py", line 80, in run
+    return super().run()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/traces/tracer.py", line 58, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/executors/local_executor.py", line 211, in do_work
+    self.execute_work(key=key, command=command)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/traces/tracer.py", line 58, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/executors/local_executor.py", line 100, in execute_work
+    state = self._execute_work_in_fork(command)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/traces/tracer.py", line 58, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/executors/local_executor.py", line 142, in _execute_work_in_fork
+    args.func(args)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 254, in _run_task_by_selected_method
+    return _run_task_by_local_task_job(args, ti)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 322, in _run_task_by_local_task_job
+    ret = run_job(job=job_runner.job, execute_callable=job_runner._execute)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/jobs/job.py", line 421, in run_job
+    return execute_job(job, execute_callable=execute_callable)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/jobs/job.py", line 450, in execute_job
+    ret = execute_callable()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/jobs/local_task_job_runner.py", line 171, in _execute
+    self.task_runner.start()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 55, in start
+    self.process = self._start_by_fork()
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3029, in _run_raw_task
+    return _run_raw_task(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 282, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3184, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3208, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/sensors/external_task.py", line 348, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/sensors/base.py", line 337, in execute
+    time.sleep(self._get_next_poke_interval(started_at, run_duration, poke_count))
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3118, in signal_handler
+    self.log.error("Stacktrace: \n%s", "".join(traceback.format_stack()))
+
+[2025-10-30T21:05:51.809+0000] {taskinstance.py:3336} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/sensors/external_task.py", line 348, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/sensors/base.py", line 337, in execute
+    time.sleep(self._get_next_poke_interval(started_at, run_duration, poke_count))
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3120, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2025-10-30T21:05:51.960+0000] {taskinstance.py:1242} INFO - Marking task as UP_FOR_RETRY. dag_id=bronze_processing, task_id=wait_for_raw_ingestion, run_id=manual__2025-10-30T20:47:39.925412+00:00, execution_date=20251030T204739, start_date=20251030T204741, end_date=20251030T210551
+[2025-10-30T21:05:52.362+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-30T21:05:52.459+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=226, status='terminated', exitcode=2, started='20:47:40') (226) terminated with exit code 2
+[2025-10-30T21:05:52.487+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 143
+[2025-10-30T21:05:52.888+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-30T21:05:52.967+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

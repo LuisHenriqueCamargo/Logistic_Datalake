@@ -1,0 +1,188 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: logistic_postgres
+    environment:
+      POSTGRES_USER: daxlog123
+      POSTGRES_PASSWORD: daxlog123
+      POSTGRES_DB: airflow 
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U daxlog123 -d airflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio
+    container_name: logistic_minio
+    environment:
+      MINIO_ROOT_USER: daxlog123
+      MINIO_ROOT_PASSWORD: daxlog123
+      MINIO_BROWSER: "on"
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9000/minio/health/live || exit 1"] 
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongodb:
+    image: mongo:6
+    container_name: logistic_mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: daxlog123
+      MONGO_INITDB_ROOT_PASSWORD: daxlog123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # ------------------------------------------------------
+  # INIT CONTAINER (PYTHONPATH CORRIGIDO)
+  # ------------------------------------------------------
+  init_airflow:
+    build: .
+    image: logistic_airflow:latest
+    container_name: logistic_init
+    restart: "no"
+    user: root
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy 
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://daxlog123:daxlog123@postgres:5432/airflow
+      AIRFLOW__CORE__FERNET_KEY: fRRLr2HDF0w9OZUpDfZ5mI-KxZQkHtMvKUPWQshcAFM=
+      AIRFLOW__WEBSERVER__SECRET_KEY: daxlog123
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      
+      AWS_ACCESS_KEY_ID: daxlog123
+      AWS_SECRET_ACCESS_KEY: daxlog123
+      AWS_REGION: us-east-1
+      S3_ENDPOINT: http://minio:9000 
+      S3_BUCKET: datalake
+      # 🚨 CORREÇÃO: Adicionando DAGS e SCRIPTS
+      PYTHONPATH: /opt/airflow/dags:/opt/airflow/scripts 
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./scripts:/opt/airflow/scripts
+      - ./data:/opt/airflow/data
+    
+    entrypoint: >
+      bash -c "
+        echo '[INIT] Esperando Postgres e MinIO ficarem prontos...';
+        /usr/local/bin/wait-for-it.sh postgres:5432 -t 60;
+        /usr/local/bin/wait-for-it.sh minio:9000 -t 60;
+
+        echo '[INIT] Garantindo permissões...';
+        chown -R airflow: /opt/airflow || true;
+
+        echo '[INIT] Migrando banco de dados...';
+        su airflow -c 'airflow db upgrade';
+
+        echo '[INIT] Criando usuário Admin e Conexões...';
+        su airflow -c 'airflow users create --username daxlog123 --firstname Daxlog --lastname User --role Admin --email daxlog123@example.com --password daxlog123' || true;
+        su airflow -c 'airflow connections add postgres_default --conn-uri postgresql://daxlog123:daxlog123@postgres:5432/airflow' || true;
+        su airflow -c 'airflow connections add mongodb_default --conn-uri mongodb://daxlog123:daxlog123@mongodb:27017' || true;
+        su airflow -c 'airflow connections add aws_default --conn-type aws --conn-login daxlog123 --conn-password daxlog123 --conn-extra \'{\"endpoint_url\":\"http://minio:9000\"}\'' || true;
+        
+        echo '[INIT] Executando script ETL inicial (opcional)...';
+        su airflow -c 'python /opt/airflow/scripts/etl_raw.py --create-buckets --rows 100' || echo '[WARN] ETL inicial falhou (ignorado).';
+
+        echo '[INIT] Concluído. O container será desligado.';
+      "
+
+  # ------------------------------------------------------
+  # AIRFLOW WEBSERVER (PYTHONPATH CORRIGIDO)
+  # ------------------------------------------------------
+  airflow-webserver:
+    image: logistic_airflow:latest
+    container_name: logistic_airflow_webserver
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy 
+      init_airflow:
+        condition: service_completed_successfully
+    user: airflow
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://daxlog123:daxlog123@postgres:5432/airflow
+      AIRFLOW__CORE__FERNET_KEY: fRRLr2HDF0w9OZUpDfZ5mI-KxZQkHtMvKUPWQshcAFM=
+      AIRFLOW__WEBSERVER__SECRET_KEY: daxlog123
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      
+      AWS_ACCESS_KEY_ID: daxlog123
+      AWS_SECRET_ACCESS_KEY: daxlog123
+      AWS_REGION: us-east-1
+      S3_ENDPOINT: http://minio:9000 
+      S3_BUCKET: datalake
+      # 🚨 CORREÇÃO: Adicionando DAGS e SCRIPTS
+      PYTHONPATH: /opt/airflow/dags:/opt/airflow/scripts 
+    ports:
+      - "8080:8080"
+    command: webserver
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./scripts:/opt/airflow/scripts
+      - ./data:/opt/airflow/data
+
+  # ------------------------------------------------------
+  # AIRFLOW SCHEDULER (PYTHONPATH CORRIGIDO)
+  # ------------------------------------------------------
+  airflow-scheduler:
+    image: logistic_airflow:latest
+    container_name: logistic_airflow_scheduler
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy 
+      init_airflow:
+        condition: service_completed_successfully
+    user: airflow
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://daxlog123:daxlog123@postgres:5432/airflow
+      AIRFLOW__CORE__FERNET_KEY: fRRLr2HDF0w9OZUpDfZ5mI-KxZQkHtMvKUPWQshcAFM=
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      
+      AWS_ACCESS_KEY_ID: daxlog123
+      AWS_SECRET_ACCESS_KEY: daxlog123
+      AWS_REGION: us-east-1
+      S3_ENDPOINT: http://minio:9000 
+      S3_BUCKET: datalake
+      # 🚨 CORREÇÃO: Adicionando DAGS e SCRIPTS
+      PYTHONPATH: /opt/airflow/dags:/opt/airflow/scripts 
+    command: scheduler
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./scripts:/opt/airflow/scripts
+      - ./data:/opt/airflow/data
+
+# =========================================================
+# Volumes persistentes
+# =========================================================
+volumes:
+  postgres_data:
+  mongo_data:
+  minio_data:
