@@ -91,25 +91,17 @@ docker-compose up -d
 🧮 Qualidade de Dados — Soda Core
 
 Após a ingestão na camada BRONZE, executa-se validações automáticas:
-
 Consistência de schema
-
 Campos nulos ou duplicados
-
 Regras de negócio customizadas
-
 Exemplo de execução manual de scan:
-
 soda scan -d postgres -c soda/config.yml soda/checks.yml
 
 📈 Futuro e Extensões
 
 Integração com dbt-core para modelagem SQL moderna
-
 Deploy remoto em ambientes corporativos (Azure, AWS, GCP)
-
 Adição de camadas Streaming (Kafka) e Monitoring (Grafana/Prometheus) 
 
 🧾 Licença
-
 MIT License — uso interno para demonstração e aprendizado.
