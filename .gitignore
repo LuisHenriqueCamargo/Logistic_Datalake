@@ -1,0 +1,118 @@
+# ==========================================
+# Logistic Data Lake — Professional .gitignore
+# Stack: Airflow + PostgreSQL + MinIO + Parquet + Soda Core
+# ==========================================
+
+# --- Airflow ---
+logs/
+airflow.db
+unittests.db
+*.sqlite
+dags/__pycache__/
+plugins/__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+*.pid
+*.log
+*.err
+*.out
+.airflowignore
+
+# --- DAG runs / temp files ---
+tmp/
+temp/
+checkpoints/
+backup/
+__temp__/
+.cache/
+
+# --- Data Lake layers ---
+data/raw/**/*.parquet
+data/bronze/**/*.parquet
+data/silver/**/*.parquet
+data/gold/**/*.parquet
+data/tmp/
+data/cache/
+data/test/
+data/__pycache__/
+data/*.csv
+data/*.json
+data/*.gz
+data/*.zip
+
+# --- MinIO (S3 local volumes) ---
+minio_data/
+minio_storage/
+minio_buckets/
+*.minio
+*.mc
+*.s3cfg
+
+# --- PostgreSQL (local storage / dumps) ---
+pg_data/
+postgres_data/
+*.sql
+*.sql.gz
+*.dump
+*.bak
+
+# --- Soda Core ---
+.soda/
+.soda_scan_results/
+soda_output/
+scan_results/
+*.yml.backup
+# (mantém seus arquivos .yml de scans principais, mas ignora resultados)
+
+# --- Configs e credenciais ---
+.env
+.env.*
+*.env
+*.bak
+*.tmp
+*.local
+secrets.yaml
+credentials.json
+keys/
+certs/
+token_*
+*.pem
+*.key
+*.crt
+
+# --- Python build artefacts ---
+__pycache__/
+*.egg-info/
+build/
+dist/
+.eggs/
+*.egg
+*.tar.gz
+*.whl
+
+# --- IDEs / sistema ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.~*
+*~
+*#
+.ipynb_checkpoints/
+
+# --- Docker / infra ---
+docker-compose.override.yml
+.dockerignore
+*.pid
+*.sock
+.docker/
+.volumes/
+.env.docker
+.env.local
+
+# --- Misc ---
+notebooks/.ipynb_checkpoints/
+reports/
