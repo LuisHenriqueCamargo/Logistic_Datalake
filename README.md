@@ -1,18 +1,21 @@
-# Logistic Data Lake — Professional Demo (Airflow + MinIO + Databricks-ready)
+# 🚀 Logistic Data Lake — Airflow + MinIO + PostgreSQL + Soda Core
 
-## Objetivo
-Projeto demonstrativo corporativo para pipeline Data Lake seguindo Logística 5.0. Arquitetura modular: RAW → BRONZE → SILVER → GOLD. Permite demonstração local com MinIO e execução em Azure Databricks para processamento em larga escala.
+**Data Lake profissional modular**, desenvolvido para demonstrar uma arquitetura de ingestão, qualidade e processamento de dados seguindo o conceito **Medallion Architecture (RAW → BRONZE → SILVER → GOLD)**.  
+Totalmente executável em ambiente local com **Airflow + Docker Compose + MinIO + PostgreSQL**, e pronto para escalar para nuvens como **Azure, AWS ou GCP**.
 
-## Stack
-- Apache Airflow 2.7 (LocalExecutor)
-- MinIO (S3 local)
-- PostgreSQL (Airflow metadata + Gold DW)
-- MongoDB (raw optional)
-- Azure Databricks (opcional) — integração via `DatabricksSubmitRunOperator`
-- Parquet (pyarrow) + partitioning year/month/day
-- Python: pandas, pyarrow, s3fs, boto3, faker
+---
 
-## Quick start (local)
-1. Criar pastas:
-   ```bash
-   mkdir dags scripts data logs
+## 🧠 Objetivo
+
+Este projeto foi construído como um **demo corporativo de Data Lakehouse**, combinando:
+- ingestão incremental,
+- processamento particionado em Parquet,
+- governança e qualidade de dados com **Soda Core**,
+- orquestração automatizada com **Apache Airflow**.
+
+> 💡 Ideal para demonstrações, POCs e ensino avançado de Engenharia de Dados aplicada à Logística 5.0.
+
+---
+
+## 🏗️ Arquitetura
+
