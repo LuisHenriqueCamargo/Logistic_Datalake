@@ -68,13 +68,13 @@ Mostrar **como projetar, validar e executar pipelines de Data Lake** corporativo
 ---
 
 ## ⚙️ Stack Técnica
-Componente,Função Principal,Detalhes Técnicos
-Apache Airflow 2.7+,Orquestração de Pipelines,LocalExecutor com DAGs modulares
-PostgreSQL,Metadados e Camada GOLD,Consultas SQL otimizadas para DW
-MinIO (S3 local),Armazenamento do Data Lake,"RAW, BRONZE, SILVER via s3fs e boto3"
-Parquet + PyArrow,Formato de Dados,Alta performance e compressão
-Soda Core,Data Quality,Definição de regras e monitoramento
-Python,ETL e Lógica de Negócio,"Pandas, PyArrow, Faker, Boto3"
+Componente	Função Principal	Detalhes Técnicos
+Apache Airflow 2.7+	Orquestração de Pipelines	LocalExecutor com DAGs modulares
+PostgreSQL	Metadados e Camada GOLD	Consultas SQL otimizadas para DW
+MinIO (S3 local)	Armazenamento do Data Lake	RAW, BRONZE, SILVER via s3fs e boto3
+Parquet + PyArrow	Formato de Dados	Alta performance e compressão
+Soda Core	Data Quality	Definição de regras e monitoramento
+Python	ETL e Lógica de Negócio	Pandas, PyArrow, Faker, Boto3
 
 ## 📂 Estrutura de Pastas
 
