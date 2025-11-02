@@ -84,9 +84,9 @@ docker-compose up -d
 
 | Serviço           | URL                                            | Login padrão                    |
 | ----------------- | ---------------------------------------------- | ------------------------------- |
-| **Airflow UI**    | [http://localhost:8080](http://localhost:8080) | `daxlog123` / `daxlog123`       |
-| **MinIO Console** | [http://localhost:9001](http://localhost:9001) | `daxlog123` / `daxlog123`       |
-| **PostgreSQL**    | localhost:5432                                 | DB: `gold_dw` / user: `airflow` |
+| Airflow UI        | [http://localhost:8080](http://localhost:8080) | `daxlog123` / `daxlog123`       |
+| MinIO Console     | [http://localhost:9001](http://localhost:9001) | `daxlog123` / `daxlog123`       |
+| PostgreSQL        | localhost:5432                                 | DB: `gold_dw` / user: `airflow` |
 
 🧮 Qualidade de Dados — Soda Core
 
