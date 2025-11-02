@@ -1,0 +1,25 @@
+name: 'logistic_datalake_dbt'
+version: '1.0.0'
+config-version: 2
+# [CRÍTICO] Perfil definido no seu profiles.yml
+profile: 'daxlog_dw' 
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+# Configuração de Materialização e Schemas
+models:
+  logistic_datalake_dbt:
+    # Configuração Padrão para todos os modelos
+    +materialized: "view"
+    
+    # Camada SILVER: Tabela para performance e correção de dados
+    silver: 
+      +schema: "silver"
+      +materialized: "table"
+      
+    # Camada GOLD: Tabela incremental para uso em BI/Relatórios
+    gold: 
+      +schema: "gold"
+      +materialized: "incremental"

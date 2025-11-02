@@ -1,0 +1,17 @@
+# dbt_project/profiles.yml
+config:
+  send_anonymous_usage_stats: False
+
+# Use um nome de perfil (ex: daxlog_dw) que será referenciado no seu dbt_project.yml
+daxlog_dw: 
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      # Note que os valores são os mesmos do Soda:
+      host: postgres
+      user: daxlog123
+      password: daxlog123
+      port: 5432
+      dbname: airflow
+      schema: public # OU o schema que o dbt deve usar para criar tabelas

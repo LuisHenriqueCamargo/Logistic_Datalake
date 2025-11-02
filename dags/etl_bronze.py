@@ -1,11 +1,12 @@
 import logging
 import json
 import pandas as pd
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine
+import io 
 from datetime import datetime
-import io  # <-- NECESSÁRIO para a carga COPY FROM
+# REMOVIDO: import findspark (Não usa Spark apenas em cluster exemplo Databriks 
 
-# Importações de funções utilitárias: Importação direta, pois o s3_utils.py está em dags/
+# Importações de funções utilitárias: s3_utils.py está em dags/
 from s3_utils import BUCKET, get_minio_client, list_objects_in_raw, get_latest_object_content 
 
 logger = logging.getLogger(__name__)
@@ -22,35 +23,57 @@ POSTGRES_DB = 'airflow'
 BRONZE_TABLE_NAME = 'bronze_awb_data'
 SCHEMA_NAME = 'public'
 
+# Definindo os tipos de dados esperados para conversão no Pandas
+DTYPE_MAP = {
+    "event_id": str,
+    "scan_timestamp": str, 
+    "awb_number": str,
+    "carrier_name": str,
+    "sortation_line_id": str,
+    "scanner_id": str,
+    "product_category": str,
+    "package_weight_kg": float, 
+    "package_dimension_cm": str,
+    "declared_value": float, 
+    "scan_type": str,
+    "scan_status": str,
+    "origin_hub": str,
+    "destination_hub": str,
+    "process_time_sec": float,
+    "is_exception": bool,
+}
+
+
 # =========================================================================
-# FUNÇÃO DE CARGA MASSIVA (FINAL V4 - COM RESET DE CURSOR)
+# FUNÇÃO DE CARGA MASSIVA (Plano Z original que funcionou)
 # =========================================================================
 
-def load_to_postgres_incremental(df: pd.DataFrame, engine):
+def load_to_postgres_robust(df_pandas: pd.DataFrame, engine):
     """
-    Carrega o DataFrame no PostgreSQL usando COPY FROM STDIN.
-    Força o fechamento e reabertura do cursor entre a criação da tabela e o COPY FROM 
-    para garantir a visibilidade da nova tabela no catálogo do Postgres.
+    Carrega o DataFrame Pandas no PostgreSQL usando Psycopg2/COPY FROM.
+    Usa TABLE TEMPORARY e NO QUOTING (correção) em uma única transação.
     """
     temp_table_name = 'temp_bronze_awb_staging'
     
-    # 1. Converte o DataFrame para um buffer CSV em memória (STDIN)
+    # 1. Configuração do buffer CSV
     csv_buffer = io.StringIO()
-    df.to_csv(csv_buffer, index=False, header=False, sep='\t', quoting=1) 
+    # A correção crítica (quoting=None)
+    df_pandas.to_csv(csv_buffer, index=False, header=False, sep='|', quoting=None, escapechar='\\', na_rep='') 
     csv_buffer.seek(0)
     
-    # 2. Executa todas as operações em uma ÚNICA raw_connection
     raw_conn = None
     try:
         raw_conn = engine.raw_connection()
         
-        # --- BLOC A: CRIAÇÃO DA TABELA DE STAGING E COMMIT ---
-        # Usa um cursor temporário para a criação e fecha-o
         with raw_conn.cursor() as cur:
+            
+            # 2. DROP e CRIAÇÃO da TABELA DE STAGING (TEMPORARY)
+            logger.info("Iniciando Transação Única: Criação/Carga/Upsert.")
             cur.execute(f"""
                 DROP TABLE IF EXISTS {SCHEMA_NAME}.{temp_table_name};
-                CREATE TABLE {SCHEMA_NAME}.{temp_table_name} (
-                    event_id VARCHAR PRIMARY KEY,
+                
+                CREATE TEMPORARY TABLE {temp_table_name} (
+                    event_id VARCHAR,
                     scan_timestamp TIMESTAMP WITHOUT TIME ZONE,
                     awb_number VARCHAR,
                     carrier_name VARCHAR,
@@ -66,26 +89,21 @@ def load_to_postgres_incremental(df: pd.DataFrame, engine):
                     destination_hub VARCHAR,
                     process_time_sec NUMERIC,
                     is_exception BOOLEAN
-                );
+                ) ON COMMIT DROP; 
             """)
-            raw_conn.commit() # Commit para tornar a tabela visível
-            logger.info(f"Tabela de staging {temp_table_name} criada e commitada.")
-        
-        # --- BLOC B: CARGA COPY FROM E UPSERT ---
-        # Reabre o cursor para garantir que ele veja a nova tabela commitada
-        with raw_conn.cursor() as cur:
+            logger.info(f"Tabela de staging TEMPORÁRIA criada no cursor atual.")
             
-            # Carga massiva (COPY FROM STDIN)
-            logger.info(f"Iniciando carga massiva (COPY FROM STDIN) de {len(df)} registros...")
+            # 3. CARGA MASSIVA (COPY FROM STDIN)
+            logger.info(f"Iniciando carga massiva (COPY FROM STDIN) de {len(df_pandas)} registros...")
             cur.copy_from(
                 csv_buffer, 
-                f'{SCHEMA_NAME}.{temp_table_name}', 
-                sep='\t', 
-                columns=df.columns.tolist()
+                f'{temp_table_name}', 
+                sep='|', 
+                columns=df_pandas.columns.tolist()
             )
             logger.info("Carga massiva para a tabela de staging concluída.")
 
-            # Cria a tabela final (se não existir)
+            # 4. CRIAÇÃO da TABELA BRONZE (Se não existir e garante PK)
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {SCHEMA_NAME}.{BRONZE_TABLE_NAME} (
                     event_id VARCHAR PRIMARY KEY,
@@ -108,63 +126,91 @@ def load_to_postgres_incremental(df: pd.DataFrame, engine):
             """)
             logger.info(f"Tabela {BRONZE_TABLE_NAME} verificada/criada.")
 
-            # Executa o UPSERT (Carga Incremental)
+            # 5. UPSERT (Carga Incremental)
             upsert_query = f"""
                 INSERT INTO {SCHEMA_NAME}.{BRONZE_TABLE_NAME}
-                SELECT * FROM {SCHEMA_NAME}.{temp_table_name}
+                SELECT * FROM {temp_table_name}
                 ON CONFLICT (event_id) DO NOTHING;
             """
             cur.execute(upsert_query)
+            logger.info("Transação UPSERT (ON CONFLICT DO NOTHING) concluída.")
             
-            raw_conn.commit() # Commit final do UPSERT
-            logger.info("Transação UPSERT concluída. Carga incremental concluída com sucesso.")
+            # 6. COMMIT FINAL
+            raw_conn.commit() 
+            logger.info("COMMIT final da transação. Carga Bronze concluída com sucesso.")
 
     except Exception as e:
         if raw_conn:
-            raw_conn.rollback()
-        logger.error(f"Falha CRÍTICA durante a carga: {e}")
+            raw_conn.rollback() 
+        logger.error(f"Falha CRÍTICA durante a carga. ROLLBACK executado: {e}")
         raise
     finally:
         if raw_conn:
-            raw_conn.close() # FECHAMENTO GARANTIDO
+            raw_conn.close() 
+
             
+# =========================================================================
+# FUNÇÃO PRINCIPAL (run_etl_bronze() - PANDAS PURO)
+# =========================================================================
 
 def run_etl_bronze():
-    # ... (O restante da função run_etl_bronze é o mesmo e não precisa ser modificado)
-    """
-    Função principal que orquestra a extração, transformação e a carga incremental.
-    """
-    logger.info("--- Iniciando ETL: RAW -> BRONZE (Incremental e Robusto) ---")
     
-    # ... (EXTRAÇÃO e TRANSFORMAÇÃO)
+    logger.info("--- Iniciando ETL: RAW -> BRONZE (Pandas Puro + Psycopg2 Load) ---")
+    
+    # 1. Extração dos Dados do MinIO (S3)
     try:
         minio_client = get_minio_client()
         latest_key = list_objects_in_raw(minio_client, BUCKET, "raw/")
+        
         if not latest_key:
             logger.warning("Nenhum arquivo encontrado na pasta RAW. ETL encerrado.")
             return
 
         file_content_bytes = get_latest_object_content(minio_client, BUCKET, latest_key)
+        file_content_str = file_content_bytes.decode('utf-8')
         
-        data = [json.loads(line) for line in file_content_bytes.decode('utf-8').splitlines()]
-        df = pd.DataFrame(data)
-        
-        df['scan_timestamp'] = pd.to_datetime(df['scan_timestamp'])
-        df['process_time_sec'] = df['process_time_sec'].astype(float)
+        # Leitura de todo o arquivo na memória (funciona para 200 linhas)
+        data = [json.loads(line) for line in file_content_str.splitlines()]
+        df_pandas = pd.DataFrame(data)
+        logger.info(f"Dados lidos do MinIO com sucesso. Total de linhas: {len(df_pandas)}")
         
     except Exception as e:
-        logger.error(f"Erro durante a extração ou transformação: {e}")
+        logger.error(f"Erro durante a extração Pandas: {e}")
         raise
 
-    # 3. CARGA INCREMENTAL (Chamando a função de carga massiva)
+    # 2. Transformação com Pandas (Garantindo Tipos e Ordem)
     try:
-        db_url = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+        df_pandas = df_pandas.astype(DTYPE_MAP)
+        
+        df_pandas['scan_timestamp'] = pd.to_datetime(df_pandas['scan_timestamp'], errors='coerce')
+        
+        column_order = [
+            "event_id", "scan_timestamp", "awb_number", "carrier_name", 
+            "sortation_line_id", "scanner_id", "product_category", "package_weight_kg", 
+            "package_dimension_cm", "declared_value", "scan_type", "scan_status", 
+            "origin_hub", "destination_hub", "process_time_sec", "is_exception"
+        ]
+        
+        df_pandas = df_pandas[column_order]
+        
+        logger.info("Transformação e garantia de tipos com Pandas concluída.")
+        
+    except Exception as e:
+        logger.error(f"Erro durante a transformação Pandas: {e}")
+        raise
+
+    # 3. CARGA INCREMENTAL ROBUSTA
+    try:
+        db_url = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
         engine = create_engine(db_url)
         
-        load_to_postgres_incremental(df, engine)
+        load_to_postgres_robust(df_pandas, engine)
         
-        logger.info(f"Carga Incremental da Tabela Bronze concluída com sucesso. Verifique 'bronze_awb_data' no PGAdmin.")
+        logger.info(f"Carga Incremental da Tabela Bronze concluída com sucesso. Verifique '{BRONZE_TABLE_NAME}' no PGAdmin.")
 
     except Exception as e:
         logger.error(f"Erro durante a carga incremental no PostgreSQL: {e}")
         raise
+    
+if __name__ == "__main__":
+    run_etl_bronze()

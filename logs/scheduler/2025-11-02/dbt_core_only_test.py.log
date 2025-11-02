@@ -1,0 +1,106 @@
+[2025-11-02T18:08:38.060+0000] {processor.py:186} INFO - Started process (PID=172) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:08:38.070+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:08:38.080+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:38.079+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:08:38.639+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:08:40.598+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:40.597+0000] {override.py:1930} INFO - Created Permission View: can read on DAG:dbt_core_only_test
+[2025-11-02T18:08:40.699+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:40.696+0000] {override.py:1930} INFO - Created Permission View: can edit on DAG:dbt_core_only_test
+[2025-11-02T18:08:40.751+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:40.750+0000] {override.py:1930} INFO - Created Permission View: can delete on DAG:dbt_core_only_test
+[2025-11-02T18:08:40.846+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:40.844+0000] {override.py:1930} INFO - Created Permission View: can create on DAG Run:dbt_core_only_test
+[2025-11-02T18:08:40.940+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:40.939+0000] {override.py:1930} INFO - Created Permission View: can read on DAG Run:dbt_core_only_test
+[2025-11-02T18:08:41.221+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:41.220+0000] {override.py:1930} INFO - Created Permission View: menu access on DAG Run:dbt_core_only_test
+[2025-11-02T18:08:41.253+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:41.252+0000] {override.py:1930} INFO - Created Permission View: can delete on DAG Run:dbt_core_only_test
+[2025-11-02T18:08:41.275+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:41.274+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:08:41.771+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:41.770+0000] {dag.py:3262} INFO - Creating ORM DAG for dbt_core_only_test
+[2025-11-02T18:08:41.780+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:41.779+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:08:42.455+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 4.489 seconds
+[2025-11-02T18:09:13.363+0000] {processor.py:186} INFO - Started process (PID=214) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:09:13.369+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:09:13.377+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:13.376+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:09:13.425+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:09:13.488+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:13.488+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:09:13.516+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:13.516+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:09:13.565+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.220 seconds
+[2025-11-02T18:09:44.247+0000] {processor.py:186} INFO - Started process (PID=263) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:09:44.256+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:09:44.294+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:44.290+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:09:44.384+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:09:44.505+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:44.505+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:09:44.563+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:44.563+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:09:44.662+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.486 seconds
+[2025-11-02T18:10:14.976+0000] {processor.py:186} INFO - Started process (PID=330) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:10:14.978+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:10:14.985+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:14.984+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:10:15.027+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:10:15.113+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:15.111+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:10:15.136+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:15.136+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:10:15.171+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.210 seconds
+[2025-11-02T18:10:45.798+0000] {processor.py:186} INFO - Started process (PID=380) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:10:45.801+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:10:45.807+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:45.807+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:10:45.854+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:10:45.910+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:45.910+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:10:45.946+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:45.945+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:10:45.983+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.200 seconds
+[2025-11-02T18:11:16.132+0000] {processor.py:186} INFO - Started process (PID=420) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:11:16.133+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:11:16.138+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:16.138+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:11:16.164+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:11:16.260+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:16.252+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:11:16.339+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:16.339+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:11:16.408+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.289 seconds
+[2025-11-02T18:11:47.439+0000] {processor.py:186} INFO - Started process (PID=460) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:11:47.442+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:11:47.448+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:47.447+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:11:47.485+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:11:47.537+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:47.536+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:11:47.560+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:47.560+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:11:47.595+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.169 seconds
+[2025-11-02T18:12:17.846+0000] {processor.py:186} INFO - Started process (PID=500) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:12:17.848+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:12:17.851+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:17.851+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:12:17.895+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:12:17.951+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:17.950+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:12:17.976+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:17.975+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:12:18.011+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.175 seconds
+[2025-11-02T18:12:48.428+0000] {processor.py:186} INFO - Started process (PID=540) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:12:48.430+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:12:48.434+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:48.434+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:12:48.476+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:12:48.534+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:48.534+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:12:48.567+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:48.567+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:12:48.615+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.203 seconds
+[2025-11-02T18:13:18.990+0000] {processor.py:186} INFO - Started process (PID=580) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:13:18.993+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:13:18.998+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:18.997+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:13:19.053+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:13:19.110+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:19.110+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:13:19.142+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:19.142+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:13:19.190+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.215 seconds
+[2025-11-02T18:13:49.321+0000] {processor.py:186} INFO - Started process (PID=620) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:13:49.323+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:13:49.328+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:49.328+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:13:49.362+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:13:49.413+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:49.413+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:13:49.435+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:49.434+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:13:49.477+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.166 seconds
+[2025-11-02T18:14:19.723+0000] {processor.py:186} INFO - Started process (PID=660) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:14:19.725+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:14:19.730+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:19.730+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:14:19.779+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:14:19.820+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:19.820+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:14:19.840+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:19.839+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:14:19.871+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.163 seconds
+[2025-11-02T18:14:50.133+0000] {processor.py:186} INFO - Started process (PID=700) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:14:50.135+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:14:50.139+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:50.138+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:14:50.172+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:14:50.222+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:50.222+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:14:50.244+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:50.244+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:14:50.302+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.181 seconds
+[2025-11-02T18:15:20.841+0000] {processor.py:186} INFO - Started process (PID=740) to work on /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:15:20.843+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_core_only_test.py for tasks to queue
+[2025-11-02T18:15:20.847+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:15:20.846+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:15:20.894+0000] {processor.py:925} INFO - DAG(s) 'dbt_core_only_test' retrieved from /opt/airflow/dags/dbt_core_only_test.py
+[2025-11-02T18:15:20.962+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:15:20.961+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-11-02T18:15:20.984+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:15:20.984+0000] {dag.py:4180} INFO - Setting next_dagrun for dbt_core_only_test to None, run_after=None
+[2025-11-02T18:15:21.016+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_core_only_test.py took 0.186 seconds

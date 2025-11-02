@@ -3,12 +3,13 @@ FROM apache/airflow:2.7.3-python3.11
 # 1️⃣ Modo root apenas para libs de sistema
 USER root
 
-# Instala bibliotecas de sistema necessárias
+# Instala bibliotecas de sistema necessárias e o Java (JDK)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
     postgresql-client \
     curl \
+    openjdk-17-jdk \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -24,3 +25,7 @@ COPY requirements.txt /requirements.txt
 # Instala as dependências Python
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r /requirements.txt
+
+# 3️⃣ Instalação do dbt Core
+# Adiciona o dbt Core e o adaptador Postgres ao ambiente Airflow
+RUN pip install --no-cache-dir dbt-postgres

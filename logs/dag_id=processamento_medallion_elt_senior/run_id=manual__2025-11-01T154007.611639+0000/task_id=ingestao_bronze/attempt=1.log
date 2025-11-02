@@ -1,0 +1,29 @@
+[2025-11-01T15:40:12.269+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-01T15:40:12.309+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: processamento_medallion_elt_senior.ingestao_bronze manual__2025-11-01T15:40:07.611639+00:00 [queued]>
+[2025-11-01T15:40:12.324+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: processamento_medallion_elt_senior.ingestao_bronze manual__2025-11-01T15:40:07.611639+00:00 [queued]>
+[2025-11-01T15:40:12.328+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 1
+[2025-11-01T15:40:12.354+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): ingestao_bronze> on 2025-11-01 15:40:07.611639+00:00
+[2025-11-01T15:40:12.410+0000] {standard_task_runner.py:72} INFO - Started process 2865 to run task
+[2025-11-01T15:40:12.417+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'processamento_medallion_elt_senior', 'ingestao_bronze', 'manual__2025-11-01T15:40:07.611639+00:00', '--job-id', '104', '--raw', '--subdir', 'DAGS_FOLDER/dag_processamento_medallion.py', '--cfg-path', '/tmp/tmpyn1vtiij']
+[2025-11-01T15:40:12.425+0000] {standard_task_runner.py:105} INFO - Job 104: Subtask ingestao_bronze
+[2025-11-01T15:40:12.581+0000] {task_command.py:467} INFO - Running <TaskInstance: processamento_medallion_elt_senior.ingestao_bronze manual__2025-11-01T15:40:07.611639+00:00 [running]> on host f905ec57e2bc
+[2025-11-01T15:40:12.788+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='processamento_medallion_elt_senior' AIRFLOW_CTX_TASK_ID='ingestao_bronze' AIRFLOW_CTX_EXECUTION_DATE='2025-11-01T15:40:07.611639+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-01T15:40:07.611639+00:00'
+[2025-11-01T15:40:12.803+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-11-01T15:40:12.900+0000] {etl_bronze.py:158} INFO - --- Iniciando ETL: RAW -> BRONZE (Pandas Puro + Psycopg2 Load) ---
+[2025-11-01T15:40:12.903+0000] {s3_utils.py:25} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-11-01T15:40:14.925+0000] {etl_bronze.py:175} INFO - Dados lidos do MinIO com sucesso. Total de linhas: 200
+[2025-11-01T15:40:15.111+0000] {etl_bronze.py:196} INFO - Transformação e garantia de tipos com Pandas concluída.
+[2025-11-01T15:40:15.381+0000] {etl_bronze.py:71} INFO - Iniciando Transação Única: Criação/Carga/Upsert.
+[2025-11-01T15:40:15.457+0000] {etl_bronze.py:94} INFO - Tabela de staging TEMPORÁRIA criada no cursor atual.
+[2025-11-01T15:40:15.459+0000] {etl_bronze.py:97} INFO - Iniciando carga massiva (COPY FROM STDIN) de 200 registros...
+[2025-11-01T15:40:15.472+0000] {etl_bronze.py:104} INFO - Carga massiva para a tabela de staging concluída.
+[2025-11-01T15:40:15.480+0000] {etl_bronze.py:127} INFO - Tabela bronze_awb_data verificada/criada.
+[2025-11-01T15:40:15.491+0000] {etl_bronze.py:136} INFO - Transação UPSERT (ON CONFLICT DO NOTHING) concluída.
+[2025-11-01T15:40:15.508+0000] {etl_bronze.py:140} INFO - COMMIT final da transação. Carga Bronze concluída com sucesso.
+[2025-11-01T15:40:15.511+0000] {etl_bronze.py:209} INFO - Carga Incremental da Tabela Bronze concluída com sucesso. Verifique 'bronze_awb_data' no PGAdmin.
+[2025-11-01T15:40:15.518+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-01T15:40:15.581+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-11-01T15:40:15.585+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=processamento_medallion_elt_senior, task_id=ingestao_bronze, run_id=manual__2025-11-01T15:40:07.611639+00:00, execution_date=20251101T154007, start_date=20251101T154012, end_date=20251101T154015
+[2025-11-01T15:40:15.736+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-01T15:40:15.804+0000] {taskinstance.py:3924} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-01T15:40:15.810+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

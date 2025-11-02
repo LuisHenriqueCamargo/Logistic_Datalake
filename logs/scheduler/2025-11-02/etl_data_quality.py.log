@@ -1,0 +1,85 @@
+[2025-11-02T18:08:38.074+0000] {processor.py:186} INFO - Started process (PID=175) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:08:38.081+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:08:38.095+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:38.093+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:08:41.395+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:41.394+0000] {config_helper.py:85} INFO - Trying to create config YAML file ~/.soda/config.yml ...
+[2025-11-02T18:08:41.414+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:08:41.413+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:08:42.069+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:08:42.222+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 4.199 seconds
+[2025-11-02T18:09:13.380+0000] {processor.py:186} INFO - Started process (PID=217) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:09:13.393+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:09:13.399+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:13.398+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:09:13.752+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:13.752+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:09:13.792+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:09:13.835+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.473 seconds
+[2025-11-02T18:09:44.305+0000] {processor.py:186} INFO - Started process (PID=266) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:09:44.311+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:09:44.324+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:44.323+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:09:44.824+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:09:44.824+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:09:44.841+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:09:44.872+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.647 seconds
+[2025-11-02T18:10:14.987+0000] {processor.py:186} INFO - Started process (PID=333) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:10:14.989+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:10:14.994+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:14.994+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:10:15.297+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:15.297+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:10:15.311+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:10:15.331+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.358 seconds
+[2025-11-02T18:10:45.809+0000] {processor.py:186} INFO - Started process (PID=383) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:10:45.812+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:10:45.816+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:45.816+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:10:46.095+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:10:46.094+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:10:46.107+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:10:46.129+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.332 seconds
+[2025-11-02T18:11:16.507+0000] {processor.py:186} INFO - Started process (PID=425) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:11:16.508+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:11:16.513+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:16.512+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:11:16.791+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:16.791+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:11:16.803+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:11:16.823+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.327 seconds
+[2025-11-02T18:11:47.450+0000] {processor.py:186} INFO - Started process (PID=463) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:11:47.452+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:11:47.456+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:47.456+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:11:47.693+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:11:47.693+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:11:47.709+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:11:47.726+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.288 seconds
+[2025-11-02T18:12:17.859+0000] {processor.py:186} INFO - Started process (PID=503) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:12:17.860+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:12:17.864+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:17.864+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:12:18.125+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:18.125+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:12:18.137+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:12:18.154+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.306 seconds
+[2025-11-02T18:12:48.440+0000] {processor.py:186} INFO - Started process (PID=543) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:12:48.442+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:12:48.447+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:48.446+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:12:48.788+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:12:48.787+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:12:48.803+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:12:48.830+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.402 seconds
+[2025-11-02T18:13:19.005+0000] {processor.py:186} INFO - Started process (PID=583) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:13:19.006+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:13:19.011+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:19.010+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:13:19.291+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:19.291+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:13:19.303+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:13:19.320+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.329 seconds
+[2025-11-02T18:13:49.565+0000] {processor.py:186} INFO - Started process (PID=625) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:13:49.567+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:13:49.571+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:49.571+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:13:49.830+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:13:49.830+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:13:49.846+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:13:49.874+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.322 seconds
+[2025-11-02T18:14:20.735+0000] {processor.py:186} INFO - Started process (PID=665) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:14:20.737+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:14:20.740+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:20.740+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:14:20.994+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:20.994+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:14:21.008+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:14:21.030+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.306 seconds
+[2025-11-02T18:14:51.187+0000] {processor.py:186} INFO - Started process (PID=705) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:14:51.189+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:14:51.193+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:51.192+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:14:51.447+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:14:51.447+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:14:51.464+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:14:51.487+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.312 seconds
+[2025-11-02T18:15:22.039+0000] {processor.py:186} INFO - Started process (PID=745) to work on /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:15:22.041+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/etl_data_quality.py for tasks to queue
+[2025-11-02T18:15:22.045+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:15:22.044+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:15:22.276+0000] {logging_mixin.py:190} INFO - [2025-11-02T18:15:22.276+0000] {soda_telemetry.py:61} INFO - Setting up usage telemetry.
+[2025-11-02T18:15:22.314+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/etl_data_quality.py
+[2025-11-02T18:15:22.340+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/etl_data_quality.py took 0.316 seconds

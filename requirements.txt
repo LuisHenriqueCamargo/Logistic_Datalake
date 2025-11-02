@@ -5,13 +5,15 @@ apache-airflow-providers-postgres==5.5.0
 apache-airflow-providers-http==4.3.0
 apache-airflow-providers-databricks==7.7.4
 # CORREÇÃO CRÍTICA: Adicionando a versão compatível do OpenLineage
-apache-airflow-providers-openlineage>=1.8.0 
+apache-airflow-providers-openlineage>=1.8.0
 
 # Data engineering
 pandas==2.2.2
 numpy==1.26.4
 pyarrow==17.0.0
 fastparquet==2024.2.0
+pyspark==3.5.1      # Motor de processamento escalável
+findspark==2.0.1    # Auxiliar para iniciar o Spark
 
 # AWS / S3 / MinIO
 boto3==1.34.122
@@ -19,17 +21,22 @@ s3fs==2024.3.1
 minio==7.2.3
 
 # Database / ORM
-sqlalchemy==1.4.52 
+sqlalchemy==1.4.52
 psycopg2-binary==2.9.9
+
+# DATA QUALITY (SODA CORE)
+# Ajuste: versão estável e compatível com Python 3.11 e Airflow 2.11.0
+soda-core==3.5.6
+soda-core-postgres==3.5.6
 
 # Utilitários
 python-dotenv==1.0.1
-requests==2.32.0 
+requests==2.32.0
 loguru==0.7.2
 tqdm==4.66.4
 colorlog==6.8.2
 ujson==5.9.0
 pyyaml==6.0.1
 
-# CORREÇÃO CRÍTICA FINAL: Adicionando biblioteca para gerar dados falsos (Faker)
+# CORREÇÃO CRÍTICA FINAL: biblioteca para gerar dados falsos
 Faker==25.0.0

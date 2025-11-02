@@ -1,0 +1,118 @@
+[2025-11-01T16:45:41.216+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-01T16:45:41.241+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: processamento_medallion_elt_senior.data_quality_check manual__2025-11-01T16:45:31.068148+00:00 [queued]>
+[2025-11-01T16:45:41.253+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: processamento_medallion_elt_senior.data_quality_check manual__2025-11-01T16:45:31.068148+00:00 [queued]>
+[2025-11-01T16:45:41.255+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 1
+[2025-11-01T16:45:41.269+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): data_quality_check> on 2025-11-01 16:45:31.068148+00:00
+[2025-11-01T16:45:41.282+0000] {standard_task_runner.py:72} INFO - Started process 300 to run task
+[2025-11-01T16:45:41.287+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'processamento_medallion_elt_senior', 'data_quality_check', 'manual__2025-11-01T16:45:31.068148+00:00', '--job-id', '114', '--raw', '--subdir', 'DAGS_FOLDER/dag_processamento_medallion.py', '--cfg-path', '/tmp/tmp3pr5wjn0']
+[2025-11-01T16:45:41.291+0000] {standard_task_runner.py:105} INFO - Job 114: Subtask data_quality_check
+[2025-11-01T16:45:41.377+0000] {task_command.py:467} INFO - Running <TaskInstance: processamento_medallion_elt_senior.data_quality_check manual__2025-11-01T16:45:31.068148+00:00 [running]> on host 83ea4d1a0c2a
+[2025-11-01T16:45:41.507+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='processamento_medallion_elt_senior' AIRFLOW_CTX_TASK_ID='data_quality_check' AIRFLOW_CTX_EXECUTION_DATE='2025-11-01T16:45:31.068148+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-01T16:45:31.068148+00:00'
+[2025-11-01T16:45:41.513+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-11-01T16:45:41.530+0000] {etl_data_quality.py:17} INFO - Iniciando Soda Data Quality Scan na tabela: silver_enriched_awb_data
+[2025-11-01T16:45:41.538+0000] {log.py:101} INFO - [16:45:41] Soda Core 3.5.6
+[2025-11-01T16:45:41.584+0000] {log.py:101} ERROR - [16:45:41] Invalid configuration header: expected "data_source {data source name}".
+[2025-11-01T16:45:41.586+0000] {log.py:115} ERROR -   +-> line=None,col=None in /opt/airflow/dags/soda/soda_config.yml
+[2025-11-01T16:45:41.694+0000] {log.py:101} ERROR - [16:45:41] Invalid check "row_count where package_weight_kg <= 0": mismatched input 'where' expecting {'between', 'not', '!=', '<>', '<=', '>=', '=', '<', '>'}
+[2025-11-01T16:45:41.699+0000] {log.py:101} ERROR - [16:45:41] Data source 'postgres_daxlog' not present in the configuration. Configured data sources: 
+[2025-11-01T16:45:41.702+0000] {log.py:101} INFO - [16:45:41] Scan summary:
+[2025-11-01T16:45:41.703+0000] {log.py:101} WARNING - [16:45:41] No valid checks found, 0 checks evaluated.
+[2025-11-01T16:45:41.704+0000] {log.py:101} INFO - [16:45:41] 3 errors.
+[2025-11-01T16:45:41.705+0000] {log.py:101} INFO - [16:45:41] Oops! 3 errors. 0 failures. 0 warnings. 0 pass.
+[2025-11-01T16:45:41.706+0000] {log.py:94} INFO - ERRORS:
+[2025-11-01T16:45:41.707+0000] {log.py:101} ERROR - [16:45:41] Invalid configuration header: expected "data_source {data source name}".
+[2025-11-01T16:45:41.708+0000] {log.py:115} ERROR -   +-> line=None,col=None in /opt/airflow/dags/soda/soda_config.yml
+[2025-11-01T16:45:41.710+0000] {log.py:101} ERROR - [16:45:41] Invalid check "row_count where package_weight_kg <= 0": mismatched input 'where' expecting {'between', 'not', '!=', '<>', '<=', '>=', '=', '<', '>'}
+[2025-11-01T16:45:41.712+0000] {log.py:101} ERROR - [16:45:41] Data source 'postgres_daxlog' not present in the configuration. Configured data sources: 
+[2025-11-01T16:45:41.714+0000] {etl_data_quality.py:34} INFO - Soda Scan concluído. Analisando resultados...
+[2025-11-01T16:45:41.716+0000] {taskinstance.py:3336} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 771, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_data_quality.py", line 36, in run_soda_scan
+    if scan.has_check_failures():
+       ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Scan' object has no attribute 'has_check_failures'
+[2025-11-01T16:45:41.750+0000] {taskinstance.py:1242} INFO - Marking task as FAILED. dag_id=processamento_medallion_elt_senior, task_id=data_quality_check, run_id=manual__2025-11-01T16:45:31.068148+00:00, execution_date=20251101T164531, start_date=20251101T164541, end_date=20251101T164541
+[2025-11-01T16:45:41.797+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-11-01T16:45:41.799+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 114 for task data_quality_check ('Scan' object has no attribute 'has_check_failures'; 300)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3029, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 282, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3184, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3208, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 771, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_data_quality.py", line 36, in run_soda_scan
+    if scan.has_check_failures():
+       ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Scan' object has no attribute 'has_check_failures'
+[2025-11-01T16:45:41.822+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-11-01T16:45:41.851+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-01T16:45:41.858+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

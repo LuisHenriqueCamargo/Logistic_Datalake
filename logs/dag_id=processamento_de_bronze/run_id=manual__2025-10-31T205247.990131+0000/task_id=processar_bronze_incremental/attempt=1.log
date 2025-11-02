@@ -1,0 +1,119 @@
+[2025-10-31T20:52:51.492+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T20:52:51.521+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: processamento_de_bronze.processar_bronze_incremental manual__2025-10-31T20:52:47.990131+00:00 [queued]>
+[2025-10-31T20:52:51.531+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: processamento_de_bronze.processar_bronze_incremental manual__2025-10-31T20:52:47.990131+00:00 [queued]>
+[2025-10-31T20:52:51.534+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-10-31T20:52:51.548+0000] {taskinstance.py:2907} INFO - Executing <Task(PythonOperator): processar_bronze_incremental> on 2025-10-31 20:52:47.990131+00:00
+[2025-10-31T20:52:51.561+0000] {standard_task_runner.py:72} INFO - Started process 1361 to run task
+[2025-10-31T20:52:51.573+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'processamento_de_bronze', 'processar_bronze_incremental', 'manual__2025-10-31T20:52:47.990131+00:00', '--job-id', '72', '--raw', '--subdir', 'DAGS_FOLDER/bronze_processing_dag.py', '--cfg-path', '/tmp/tmpwpw_xz3s']
+[2025-10-31T20:52:51.590+0000] {standard_task_runner.py:105} INFO - Job 72: Subtask processar_bronze_incremental
+[2025-10-31T20:52:51.809+0000] {task_command.py:467} INFO - Running <TaskInstance: processamento_de_bronze.processar_bronze_incremental manual__2025-10-31T20:52:47.990131+00:00 [running]> on host ae3cef078928
+[2025-10-31T20:52:51.976+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='daxlog' AIRFLOW_CTX_DAG_ID='processamento_de_bronze' AIRFLOW_CTX_TASK_ID='processar_bronze_incremental' AIRFLOW_CTX_EXECUTION_DATE='2025-10-31T20:52:47.990131+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-31T20:52:47.990131+00:00'
+[2025-10-31T20:52:51.978+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-10-31T20:52:52.002+0000] {etl_bronze.py:176} INFO - --- Iniciando ETL: RAW -> BRONZE (PySpark Extract/Transform + Psycopg2 Load) ---
+[2025-10-31T20:52:56.531+0000] {s3_utils.py:25} INFO - Conectando ao MinIO em: http://minio:9000 com BUCKET: datalake
+[2025-10-31T20:53:09.863+0000] {etl_bronze.py:199} INFO - Dados lidos do MinIO com sucesso. Total de linhas: 200
+[2025-10-31T20:53:11.822+0000] {etl_bronze.py:230} INFO - Transformação concluída. DataFrame convertido para Pandas (200 linhas).
+[2025-10-31T20:53:11.862+0000] {etl_bronze.py:72} INFO - Iniciando Transação 1: Criação e Limpeza da Tabela Staging.
+[2025-10-31T20:53:11.950+0000] {etl_bronze.py:98} INFO - Tabela de staging temp_bronze_awb_staging criada e committed com sucesso.
+[2025-10-31T20:53:11.952+0000] {etl_bronze.py:112} INFO - Iniciando carga massiva (COPY FROM STDIN) de 200 registros...
+[2025-10-31T20:53:11.955+0000] {etl_bronze.py:163} ERROR - Falha CRÍTICA durante a carga. ROLLBACK executado: relation "public.temp_bronze_awb_staging" does not exist
+
+[2025-10-31T20:53:11.956+0000] {etl_bronze.py:247} ERROR - Erro durante a carga incremental no PostgreSQL: relation "public.temp_bronze_awb_staging" does not exist
+
+[2025-10-31T20:53:12.654+0000] {etl_bronze.py:252} INFO - Sessão Spark finalizada.
+[2025-10-31T20:53:12.661+0000] {taskinstance.py:3336} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_bronze.py", line 242, in run_etl_bronze
+    load_to_postgres_robust(df_pandas, engine)
+  File "/opt/airflow/dags/etl_bronze.py", line 113, in load_to_postgres_robust
+    cur.copy_from(
+psycopg2.errors.UndefinedTable: relation "public.temp_bronze_awb_staging" does not exist
+
+[2025-10-31T20:53:12.722+0000] {taskinstance.py:1242} INFO - Marking task as UP_FOR_RETRY. dag_id=processamento_de_bronze, task_id=processar_bronze_incremental, run_id=manual__2025-10-31T20:52:47.990131+00:00, execution_date=20251031T205247, start_date=20251031T205251, end_date=20251031T205312
+[2025-10-31T20:53:12.813+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-10-31T20:53:12.817+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 72 for task processar_bronze_incremental (relation "public.temp_bronze_awb_staging" does not exist
+; 1361)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3029, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 282, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3184, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3208, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 776, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 742, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_bronze.py", line 242, in run_etl_bronze
+    load_to_postgres_robust(df_pandas, engine)
+  File "/opt/airflow/dags/etl_bronze.py", line 113, in load_to_postgres_robust
+    cur.copy_from(
+psycopg2.errors.UndefinedTable: relation "public.temp_bronze_awb_staging" does not exist
+
+[2025-10-31T20:53:12.862+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-10-31T20:53:12.921+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T20:53:12.927+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -49,7 +49,7 @@ services:
       - mongo_data:/data/db
 
   # ------------------------------------------------------
-  # INIT CONTAINER (PYTHONPATH CORRIGIDO)
+  # INIT CONTAINER (Adicionado Volume dbt)
   # ------------------------------------------------------
   init_airflow:
     build: .
@@ -74,13 +74,14 @@ services:
       AWS_REGION: us-east-1
       S3_ENDPOINT: http://minio:9000 
       S3_BUCKET: datalake
-      # 🚨 CORREÇÃO: Adicionando DAGS e SCRIPTS
       PYTHONPATH: /opt/airflow/dags:/opt/airflow/scripts 
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
       - ./scripts:/opt/airflow/scripts
       - ./data:/opt/airflow/data
+      - ./drivers:/opt/airflow/drivers
+      - ./dbt_project:/opt/airflow/dbt_project # <--- NOVO: Mapeamento do dbt
     
     entrypoint: >
       bash -c "
@@ -107,7 +108,7 @@ services:
       "
 
   # ------------------------------------------------------
-  # AIRFLOW WEBSERVER (PYTHONPATH CORRIGIDO)
+  # AIRFLOW WEBSERVER (Adicionado Volume dbt)
   # ------------------------------------------------------
   airflow-webserver:
     image: logistic_airflow:latest
@@ -133,7 +134,6 @@ services:
       AWS_REGION: us-east-1
       S3_ENDPOINT: http://minio:9000 
       S3_BUCKET: datalake
-      # 🚨 CORREÇÃO: Adicionando DAGS e SCRIPTS
       PYTHONPATH: /opt/airflow/dags:/opt/airflow/scripts 
     ports:
       - "8080:8080"
@@ -143,9 +143,11 @@ services:
       - ./logs:/opt/airflow/logs
       - ./scripts:/opt/airflow/scripts
       - ./data:/opt/airflow/data
+      - ./drivers:/opt/airflow/drivers
+      - ./dbt_project:/opt/airflow/dbt_project # <--- NOVO: Mapeamento do dbt
 
   # ------------------------------------------------------
-  # AIRFLOW SCHEDULER (PYTHONPATH CORRIGIDO)
+  # AIRFLOW SCHEDULER (Adicionado Volume dbt)
   # ------------------------------------------------------
   airflow-scheduler:
     image: logistic_airflow:latest
@@ -170,7 +172,6 @@ services:
       AWS_REGION: us-east-1
       S3_ENDPOINT: http://minio:9000 
       S3_BUCKET: datalake
-      # 🚨 CORREÇÃO: Adicionando DAGS e SCRIPTS
       PYTHONPATH: /opt/airflow/dags:/opt/airflow/scripts 
     command: scheduler
     volumes:
@@ -178,6 +179,8 @@ services:
       - ./logs:/opt/airflow/logs
       - ./scripts:/opt/airflow/scripts
       - ./data:/opt/airflow/data
+      - ./drivers:/opt/airflow/drivers
+      - ./dbt_project:/opt/airflow/dbt_project # <--- NOVO: Mapeamento do dbt 
 
 # =========================================================
 # Volumes persistentes

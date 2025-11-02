@@ -1,0 +1,88 @@
+[2025-11-02T18:09:53.950+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-02T18:09:53.989+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: processamento_medallion_elt_senior.modelagem_gold_elt manual__2025-11-02T18:09:40.518018+00:00 [queued]>
+[2025-11-02T18:09:54.010+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: processamento_medallion_elt_senior.modelagem_gold_elt manual__2025-11-02T18:09:40.518018+00:00 [queued]>
+[2025-11-02T18:09:54.015+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 1
+[2025-11-02T18:09:54.046+0000] {taskinstance.py:2907} INFO - Executing <Task(PostgresOperator): modelagem_gold_elt> on 2025-11-02 18:09:40.518018+00:00
+[2025-11-02T18:09:54.064+0000] {standard_task_runner.py:72} INFO - Started process 321 to run task
+[2025-11-02T18:09:54.110+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'processamento_medallion_elt_senior', 'modelagem_gold_elt', 'manual__2025-11-02T18:09:40.518018+00:00', '--job-id', '84', '--raw', '--subdir', 'DAGS_FOLDER/dag_processamento_medallion.py', '--cfg-path', '/tmp/tmpyek26gng']
+[2025-11-02T18:09:54.124+0000] {standard_task_runner.py:105} INFO - Job 84: Subtask modelagem_gold_elt
+[2025-11-02T18:09:54.371+0000] {task_command.py:467} INFO - Running <TaskInstance: processamento_medallion_elt_senior.modelagem_gold_elt manual__2025-11-02T18:09:40.518018+00:00 [running]> on host 08817d7a736d
+[2025-11-02T18:09:54.488+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='processamento_medallion_elt_senior' AIRFLOW_CTX_TASK_ID='modelagem_gold_elt' AIRFLOW_CTX_EXECUTION_DATE='2025-11-02T18:09:40.518018+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-02T18:09:40.518018+00:00'
+[2025-11-02T18:09:54.492+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-11-02T18:09:54.513+0000] {sql.py:309} INFO - Executing: -- Arquivo: dags/sql/gold_transform.sql
+-- Objetivo: Mover a lógica de agregação Gold (Pandas) para o SQL (ELT).
+-- Demonstra: Agregação eficiente e modelagem para consumo (Data Mart).
+
+-- 1. DROP e RE-CRIAÇÃO da tabela Gold (DDL)
+DROP TABLE IF EXISTS public.gold_volumes_by_destination CASCADE;
+
+CREATE TABLE public.gold_volumes_by_destination (
+    destination_hub VARCHAR PRIMARY KEY,
+    total_packages NUMERIC,
+    total_weight_kg NUMERIC,
+    avg_process_time_sec NUMERIC,
+    total_high_value_packages NUMERIC, 
+    last_processed_at TIMESTAMP WITHOUT TIME ZONE
+);
+
+-- 2. INSERÇÃO e TRANSFORMAÇÃO (ELT)
+INSERT INTO public.gold_volumes_by_destination
+SELECT
+    destination_hub,
+    COUNT(event_id) AS total_packages,
+    SUM(package_weight_kg) AS total_weight_kg,
+    -- Utiliza a métrica de tempo criada no Silver
+    AVG(process_time_sec) AS avg_process_time_sec,
+    -- Agregação de booleanos (equivalente ao .sum() no Pandas)
+    SUM(CASE WHEN is_high_value THEN 1 ELSE 0 END) AS total_high_value_packages,
+    NOW() AS last_processed_at
+FROM
+    public.silver_enriched_awb_data
+GROUP BY
+    destination_hub
+ON CONFLICT (destination_hub) DO NOTHING;
+[2025-11-02T18:09:54.536+0000] {base.py:84} INFO - Retrieving connection 'postgres_default'
+[2025-11-02T18:09:54.551+0000] {base.py:84} INFO - Retrieving connection 'postgres_default'
+[2025-11-02T18:09:54.553+0000] {sql.py:249} WARNING - This setter is for backward compatibility and should not be used.
+Since the introduction of connection property, the providers listed below breaks due to assigning value to self.connection in their __init__ method.
+* apache-airflow-providers-mysql<5.7.1
+* apache-airflow-providers-elasticsearch<5.5.1
+* apache-airflow-providers-postgres<5.13.0
+[2025-11-02T18:09:54.559+0000] {sql.py:810} INFO - Running statement: -- Arquivo: dags/sql/gold_transform.sql
+-- Objetivo: Mover a lógica de agregação Gold (Pandas) para o SQL (ELT).
+-- Demonstra: Agregação eficiente e modelagem para consumo (Data Mart).
+
+-- 1. DROP e RE-CRIAÇÃO da tabela Gold (DDL)
+DROP TABLE IF EXISTS public.gold_volumes_by_destination CASCADE;
+
+CREATE TABLE public.gold_volumes_by_destination (
+    destination_hub VARCHAR PRIMARY KEY,
+    total_packages NUMERIC,
+    total_weight_kg NUMERIC,
+    avg_process_time_sec NUMERIC,
+    total_high_value_packages NUMERIC, 
+    last_processed_at TIMESTAMP WITHOUT TIME ZONE
+);
+
+-- 2. INSERÇÃO e TRANSFORMAÇÃO (ELT)
+INSERT INTO public.gold_volumes_by_destination
+SELECT
+    destination_hub,
+    COUNT(event_id) AS total_packages,
+    SUM(package_weight_kg) AS total_weight_kg,
+    -- Utiliza a métrica de tempo criada no Silver
+    AVG(process_time_sec) AS avg_process_time_sec,
+    -- Agregação de booleanos (equivalente ao .sum() no Pandas)
+    SUM(CASE WHEN is_high_value THEN 1 ELSE 0 END) AS total_high_value_packages,
+    NOW() AS last_processed_at
+FROM
+    public.silver_enriched_awb_data
+GROUP BY
+    destination_hub
+ON CONFLICT (destination_hub) DO NOTHING;, parameters: None
+[2025-11-02T18:09:54.587+0000] {sql.py:822} INFO - Rows affected: 4
+[2025-11-02T18:09:54.605+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-11-02T18:09:54.608+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=processamento_medallion_elt_senior, task_id=modelagem_gold_elt, run_id=manual__2025-11-02T18:09:40.518018+00:00, execution_date=20251102T180940, start_date=20251102T180953, end_date=20251102T180954
+[2025-11-02T18:09:54.689+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-02T18:09:54.717+0000] {taskinstance.py:3924} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-02T18:09:54.723+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

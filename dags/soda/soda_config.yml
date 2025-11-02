@@ -1,0 +1,8 @@
+data_source postgres_daxlog:
+  type: postgres
+  connection:
+    host: postgres          # POSTGRES_HOST (nome do serviço no docker-compose)
+    port: 5432              # POSTGRES_PORT
+    database: airflow       # POSTGRES_DB
+    username: daxlog123     # POSTGRES_USER
+    password: daxlog123     # POSTGRES_PASSWORD

@@ -1,0 +1,21 @@
+# Arquivo: dags/soda/silver_checks.yml
+
+checks for silver_enriched_awb_data:
+  
+  # Check 1: Critical - Nenhuma coluna de agregação chave pode ser nula
+  - missing_count(destination_hub) = 0:
+      name: critical_no_missing_destination_hub
+      fail: when > 0
+
+  # Check 2: Integridade - O peso do pacote deve ser positivo
+  # CORREÇÃO APLICADA: Substituído 'row_count where <condição>' por 'row_count' com a propriedade 'filter'.
+  - row_count:
+      filter: package_weight_kg <= 0  # Condição que define as linhas a serem contadas
+      name: integrity_positive_weight
+      fail: when > 0                 # Falha se o count de linhas com peso <= 0 for maior que zero
+
+  # Check 3: Validade - A média de tempo de processamento não pode ser negativa (Sanity check)
+  # A sintaxe deste check já estava correta.
+  - avg(process_time_sec):
+      name: integrity_non_negative_process_time
+      fail: when < 0
