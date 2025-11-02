@@ -90,3 +90,43 @@ Mostrar **como projetar, validar e executar pipelines de Data Lake** corporativo
 ┣ 📜 .env → Variáveis de ambiente (credenciais)
 ┗ 📜 README.md
 
+
+---
+
+## 🧰 Quick Start (Local)
+
+### 1️⃣ — Ativar ambiente Python
+```powershell
+cd "C:\Users\Luis Camargo\Desktop\Logistic_Datalake"
+.venv\Scripts\Activate.ps1
+
+2️⃣ — Subir infraestrutura completa
+docker-compose up -d
+
+3️⃣ — Acessar interfaces
+| Serviço           | URL                                            | Login padrão                    |
+| ----------------- | ---------------------------------------------- | ------------------------------- |
+|       Airflow UI  | [http://localhost:8080](http://localhost:8080) | `daxlog123` / `daxlog123`       |
+|     MinIO Console | [http://localhost:9001](http://localhost:9001) | `daxlog123` / `daxlog123`       |
+|     PostgreSQL    | localhost:5432                                 | DB: `gold_dw` / user: `airflow` |
+
+🧮 Qualidade de Dados — Soda Core
+
+Após a camada BRONZE, os dados passam por validações automáticas de:
+Consistência de schema
+Campos nulos ou duplicados
+Regras de negócio definidas
+Executar manualmente scan local: 
+soda scan -d postgres -c soda/config.yml soda/checks.yml
+
+📈 Futuro & Extensões
+
+Integração com dbt-core para transformação SQL modular
+Deploy remoto em Azure, AWS ou GCP
+Streaming de dados (Kafka) e monitoramento (Grafana/Prometheus) 
+
+
+💼 Autor
+<h4>Luis Henrique Camargo — Especialista em Logística e Engenharia de Dados</h4> <p align="center"> <a href="https://www.linkedin.com/in/luisespecialista/" target="_blank"> <img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white" alt="LinkedIn"/> </a> <a href="mailto:especialista.luiscamargo@gmail.com"> <img src="https://img.shields.io/badge/Email-especialista.luiscamargo%40gmail.com-red?logo=gmail&logoColor=white" alt="Email"/> </a> <a href="https://wa.me/5511940880735"> <img src="https://img.shields.io/badge/WhatsApp-Contato-brightgreen?logo=whatsapp&logoColor=white" alt="WhatsApp"/> </a> </p>
+
+💡 “Transformar dados em inteligência e operações em vantagem competitiva.”
