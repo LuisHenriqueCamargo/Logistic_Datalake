@@ -68,14 +68,13 @@ Mostrar **como projetar, validar e executar pipelines de Data Lake** corporativo
 ---
 
 ## ⚙️ Stack Técnica
-
-- **📊 Dados & BI:** Parquet, PyArrow, Python (Pandas, NumPy), SQL  
-- **⚙️ Engenharia de Dados:** Airflow, PostgreSQL, MinIO, Docker, ETL  
-- **🧠 Data Quality:** Soda Core, validações automáticas de regras de negócio  
-- **🌐 Automação & Workflow:** Python, DAGs Airflow, integração local com MinIO  
-- **📈 Performance Logística:** Monitoramento de KPIs de SLA, custo e operação  
-
----
+Componente,Função Principal,Detalhes Técnicos
+Apache Airflow 2.7+,Orquestração de Pipelines,LocalExecutor com DAGs modulares
+PostgreSQL,Metadados e Camada GOLD,Consultas SQL otimizadas para DW
+MinIO (S3 local),Armazenamento do Data Lake,"RAW, BRONZE, SILVER via s3fs e boto3"
+Parquet + PyArrow,Formato de Dados,Alta performance e compressão
+Soda Core,Data Quality,Definição de regras e monitoramento
+Python,ETL e Lógica de Negócio,"Pandas, PyArrow, Faker, Boto3"
 
 ## 📂 Estrutura de Pastas
 
