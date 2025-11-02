@@ -48,9 +48,9 @@ services:
     volumes:
       - mongo_data:/data/db
 
-  # ------------------------------------------------------
+
   # INIT CONTAINER (Adicionado Volume dbt)
-  # ------------------------------------------------------
+
   init_airflow:
     build: .
     image: logistic_airflow:latest
@@ -107,9 +107,9 @@ services:
         echo '[INIT] Concluído. O container será desligado.';
       "
 
-  # ------------------------------------------------------
+
   # AIRFLOW WEBSERVER (Adicionado Volume dbt)
-  # ------------------------------------------------------
+
   airflow-webserver:
     image: logistic_airflow:latest
     container_name: logistic_airflow_webserver
@@ -146,9 +146,8 @@ services:
       - ./drivers:/opt/airflow/drivers
       - ./dbt_project:/opt/airflow/dbt_project # <--- NOVO: Mapeamento do dbt
 
-  # ------------------------------------------------------
   # AIRFLOW SCHEDULER (Adicionado Volume dbt)
-  # ------------------------------------------------------
+
   airflow-scheduler:
     image: logistic_airflow:latest
     container_name: logistic_airflow_scheduler
@@ -182,9 +181,8 @@ services:
       - ./drivers:/opt/airflow/drivers
       - ./dbt_project:/opt/airflow/dbt_project # <--- NOVO: Mapeamento do dbt 
 
-# =========================================================
 # Volumes persistentes
-# =========================================================
+
 volumes:
   postgres_data:
   mongo_data:
