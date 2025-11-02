@@ -42,4 +42,51 @@ Mostrar **como projetar, validar e executar pipelines de Data Lake** corporativo
 ---
 
 ## 🏗️ Arquitetura
+      ┌────────────┐
+      │   RAW      │  ← Dados brutos (CSV, JSON, APIs, etc.)
+      └─────┬──────┘
+            │
+     Ingestão (Airflow + Python)
+            │
+      ┌─────▼──────┐
+      │  BRONZE    │  ← Padronização, formatação, Parquet
+      └─────┬──────┘
+            │
+     Validação (Soda Core)
+            │
+      ┌─────▼──────┐
+      │  SILVER    │  ← Dados refinados e prontos para modelagem
+      └─────┬──────┘
+            │
+     Agregações / SQL puro (PostgreSQL)
+            │
+      ┌─────▼──────┐
+      │   GOLD     │  ← Data Warehouse analítico
+      └────────────┘
+
+      
+---
+
+## ⚙️ Stack Técnica
+
+- **📊 Dados & BI:** Parquet, PyArrow, Python (Pandas, NumPy), SQL  
+- **⚙️ Engenharia de Dados:** Airflow, PostgreSQL, MinIO, Docker, ETL  
+- **🧠 Data Quality:** Soda Core, validações automáticas de regras de negócio  
+- **🌐 Automação & Workflow:** Python, DAGs Airflow, integração local com MinIO  
+- **📈 Performance Logística:** Monitoramento de KPIs de SLA, custo e operação  
+
+---
+
+## 📂 Estrutura de Pastas
+
+📦 Logistic_Datalake
+┣ 📂 dags/ → DAGs Airflow (RAW → GOLD + QA)
+┣ 📂 scripts/ → Funções auxiliares e ETLs
+┣ 📂 data/ → Dados particionados por camada (Parquet)
+┣ 📂 soda/ → Configuração e scans do Soda Core
+┣ 📂 logs/ → Logs do Airflow (não versionados)
+┣ 📜 docker-compose.yml → Infraestrutura local
+┣ 📜 requirements.txt → Dependências Python
+┣ 📜 .env → Variáveis de ambiente (credenciais)
+┗ 📜 README.md
 
