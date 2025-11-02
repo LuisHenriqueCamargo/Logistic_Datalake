@@ -17,13 +17,6 @@ Este projeto foi construído como um **demo corporativo de Data Lakehouse**, com
 
 > Ideal para demonstrações técnicas, POCs internas e ensino avançado de Engenharia de Dados aplicada à Logística 5.0.
 
----
-
-## 🏗️ Arquitetura
-
-
----
-
 ## 🏗️ Arquitetura
       ┌────────────┐
       │   RAW      │  ← Dados brutos (CSV, JSON, APIs, etc.)
@@ -72,5 +65,51 @@ Este projeto foi construído como um **demo corporativo de Data Lakehouse**, com
 ┣ 📜 docker-compose.yml → Infraestrutura local completa
 ┣ 📜 requirements.txt → Dependências Python
 ┣ 📜 .env → Variáveis de ambiente (credenciais, paths)
-┗ 📜 README.md
+┗ 📜 README.md 
 
+
+---
+
+## 🧰 Quick Start (Local)
+
+### 1️⃣ — Ativar ambiente local
+```powershell
+cd "C:\Users\Luis Camargo\Desktop\Logistic_Datalake"
+.venv\Scripts\Activate.ps1
+
+2️⃣ — Subir a infraestrutura
+docker-compose up -d
+
+3️⃣ — Acessar interfaces
+
+| Serviço           | URL                                            | Login padrão                    |
+| ----------------- | ---------------------------------------------- | ------------------------------- |
+| **Airflow UI**    | [http://localhost:8080](http://localhost:8080) | `daxlog123` / `daxlog123`       |
+| **MinIO Console** | [http://localhost:9001](http://localhost:9001) | `daxlog123` / `daxlog123`       |
+| **PostgreSQL**    | localhost:5432                                 | DB: `gold_dw` / user: `airflow` |
+
+🧮 Qualidade de Dados — Soda Core
+
+Após a ingestão na camada BRONZE, executa-se validações automáticas:
+
+Consistência de schema
+
+Campos nulos ou duplicados
+
+Regras de negócio customizadas
+
+Exemplo de execução manual de scan:
+
+soda scan -d postgres -c soda/config.yml soda/checks.yml
+
+📈 Futuro e Extensões
+
+Integração com dbt-core para modelagem SQL moderna
+
+Deploy remoto em ambientes corporativos (Azure, AWS, GCP)
+
+Adição de camadas Streaming (Kafka) e Monitoring (Grafana/Prometheus) 
+
+🧾 Licença
+
+MIT License — uso interno para demonstração e aprendizado.
