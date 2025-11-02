@@ -26,19 +26,27 @@ Montar como projetos, validar e executar pipelines de Data Lake corporativos, pe
 
 ## 🏗️ Arquitetura
 
-```mermaid
-graph TD
-    A[RAW] -- Ingestão (Airflow + Python) --> B(BRONZE);
-    B -- Limpeza / Validação (Soda Core) --> C(SILVER);
-    C -- Agregações / SQL puro (PostgreSQL) --> D[GOLD];
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px,label:Dados brutos (CSV, JSON, APIs, etc.)
-    style B fill:#add8e6,stroke:#333,stroke-width:2px,label:Padronização, formatação, Parquet
-    style C fill:#90ee90,stroke:#333,stroke-width:2px,label:Dados refinados, prontos para modelagem
-    style D fill:#ffd700,stroke:#333,stroke-width:2px,label:Data Warehouse analítico
-```
-
----
+┌──────────┐
+│   RAW    │  ← Dados brutos (CSV, JSON, APIs, etc.)
+└─────┬────┘
+      │
+Ingestão (Airflow + Python)
+      │
+┌─────▼────┐
+│  BRONZE  │  ← Padronização, formatação, Parquet
+└─────┬────┘
+      │
+Limpeza / Validação (Soda Core)
+      │
+┌─────▼────┐
+│  SILVER  │  ← Dados refinados, prontos para modelagem
+└─────┬────┘
+      │
+Agregações / SQL puro (PostgreSQL)
+      │
+┌─────▼────┐
+│   GOLD   │  ← Data Warehouse analítico
+└──────────┘
 
 ## ⚙️ Técnica de Pilha
 
