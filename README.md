@@ -1,131 +1,131 @@
-<h1 align="center">👋 Olá, eu sou <strong>Luis Camargo</strong></h1>
-<h3 align="center">Especialista em Logística e Engenharia de Dados</h3>
+# 🚀 Data Lake Logístico — Demonstração Interna
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/luisespecialista/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="mailto:especialista.luiscamargo@gmail.com">
-    <img src="https://img.shields.io/badge/Email-especialista.luiscamargo%40gmail.com-red?logo=gmail&logoColor=white" alt="Email"/>
-  </a>
-  <a href="https://wa.me/5511940880735">
-    <img src="https://img.shields.io/badge/WhatsApp-Contato-brightgreen?logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-</p>
+Este projeto é uma **demonstração corporativa de Data Lake**, baseada na arquitetura **Medallion (RAW → BRONZE → SILVER → GOLD)**, totalmente apresentada em ambiente local com:
+
+* **Apache Airflow** para orquestração modular;
+* **PostgreSQL** (metadados e camada GOLD);
+* **MinIO** (armazenamento local S3 para BRONZE e SILVER);
+* **Parquet + PyArrow** para formatação de dados;
+* **Soda Core** para Data Quality e desempenho máximo.
+
+> ⚠️ **Aviso:** Este repositório é **privado** e destinado apenas para demonstração interna. Não deve ser compartilhado publicamente.
 
 ---
 
-## 🚀 Logistic Data Lake — Demonstração Interna
+## 🎯 Objetivo
 
-Este projeto é uma **demonstração corporativa de Data Lake**, baseado na arquitetura **Medallion (RAW → BRONZE → SILVER → GOLD)**, totalmente executável em ambiente local com:
+Montar como projetos, validar e executar pipelines de Data Lake corporativos, permitindo:
 
-- **Airflow** (orquestração e automação de pipelines)
-- **PostgreSQL** (metadados do Airflow + camada GOLD)
-- **MinIO** (armazenamento RAW, BRONZE e SILVER em Parquet)
-- **Soda Core** (monitoramento e validação de qualidade de dados)
-- **SQL puro e Python** para máxima performance
-
-> ⚠️ Este repositório é **privado** e destinado apenas a demonstração interna. Não deve ser compartilhado publicamente.
-
----
-
-## 🧩 Objetivo
-
-Mostrar **como projetar, validar e executar pipelines de Data Lake** corporativos, permitindo:
-
-- Ingestão incremental de dados brutos
-- Processamento e padronização em Parquet
-- Monitoramento de qualidade de dados com Soda Core
-- Transformações e agregações em SQL puro
-- Orquestração de fluxo de dados com Airflow
+* Ingestão incremental de dados brutos;
+* Processamento particionado em Parquet;
+* Monitoramento de qualidade de dados com Soda Core;
+* Gerenciamento de tabelas de metadados;
+* Orquestração de fluxo de dados com Airflow.
 
 ---
 
 ## 🏗️ Arquitetura
-      ┌────────────┐
-      │   RAW      │  ← Dados brutos (CSV, JSON, APIs, etc.)
-      └─────┬──────┘
-            │
-     Ingestão (Airflow + Python)
-            │
-      ┌─────▼──────┐
-      │  BRONZE    │  ← Padronização, formatação, Parquet
-      └─────┬──────┘
-            │
-     Validação (Soda Core)
-            │
-      ┌─────▼──────┐
-      │  SILVER    │  ← Dados refinados e prontos para modelagem
-      └─────┬──────┘
-            │
-     Agregações / SQL puro (PostgreSQL)
-            │
-      ┌─────▼──────┐
-      │   GOLD     │  ← Data Warehouse analítico
-      └────────────┘
 
-      
+```mermaid
+graph TD
+    A[RAW] -- Ingestão (Airflow + Python) --> B(BRONZE);
+    B -- Limpeza / Validação (Soda Core) --> C(SILVER);
+    C -- Agregações / SQL puro (PostgreSQL) --> D[GOLD];
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px,label:Dados brutos (CSV, JSON, APIs, etc.)
+    style B fill:#add8e6,stroke:#333,stroke-width:2px,label:Padronização, formatação, Parquet
+    style C fill:#90ee90,stroke:#333,stroke-width:2px,label:Dados refinados, prontos para modelagem
+    style D fill:#ffd700,stroke:#333,stroke-width:2px,label:Data Warehouse analítico
+```
+
 ---
 
-## ⚙️ Stack Técnica
-Componente	Função Principal	Detalhes Técnicos
-Apache Airflow 2.7+	Orquestração de Pipelines	LocalExecutor com DAGs modulares
-PostgreSQL	Metadados e Camada GOLD	Consultas SQL otimizadas para DW
-MinIO (S3 local)	Armazenamento do Data Lake	RAW, BRONZE, SILVER via s3fs e boto3
-Parquet + PyArrow	Formato de Dados	Alta performance e compressão
-Soda Core	Data Quality	Definição de regras e monitoramento
-Python	ETL e Lógica de Negócio	Pandas, PyArrow, Faker, Boto3
+## ⚙️ Técnica de Pilha
 
-## 📂 Estrutura de Pastas
+| Componente | Função Principal | Detalhes Técnicos |
+|:-------------|:-----------------|:-------------------|
+| **Apache Airflow 2.7+** | Orquestração de Pipelines | LocalExecutor com DAGs modulares |
+| **PostgreSQL** | Metadados e Camada GOLD | Consultas SQL otimizadas para DW |
+| **MinIO (S3 local)** | Armazenamento do Data Lake | RAW, BRONZE, SILVER via `s3fs` e `boto3` |
+| **Parquet + PyArrow** | Formato de Dados | Alta performance e compressão |
+| **Soda Core** | Data Quality | Definição de regras e monitoramento |
+| **Python** | ETL e Lógica de Negócio | Pandas, PyArrow, Faker, Boto3 |
 
+---
+
+## 🗂️ Estrutura de Pastas
+
+```
 📦 Logistic_Datalake
-┣ 📂 dags/ → DAGs Airflow (RAW → GOLD + QA)
-┣ 📂 scripts/ → Funções auxiliares e ETLs
+┣ 📂 dags/ → DAGs do Airflow (RAW, BRONZE, SILVER, GOLD, QA)
+┣ 📂 scripts/ → Funções auxiliares e scripts de ETL
 ┣ 📂 data/ → Dados particionados por camada (Parquet)
-┣ 📂 soda/ → Configuração e scans do Soda Core
-┣ 📂 logs/ → Logs do Airflow (não versionados)
-┣ 📜 docker-compose.yml → Infraestrutura local
+┣ 📂 soda/ → Arquivos de configuração e scans do Soda Core
+┣ 📂 logs/ → Logs do Airflow (Ignorado no Git)
+┣ 📜 docker-compose.yml → Infraestrutura local completa
 ┣ 📜 requirements.txt → Dependências Python
-┣ 📜 .env → Variáveis de ambiente (credenciais)
+┣ 📜 .env → Variáveis de ambiente (credenciais, paths)
 ┗ 📜 README.md
-
+```
 
 ---
 
-## 🧰 Quick Start (Local)
+## 🚀 Início Rápido (Local)
 
 ### 1️⃣ — Ativar ambiente Python
+
+Abra o terminal na pasta raiz do projeto e execute:
+
 ```powershell
+# Exemplo de ativação de ambiente virtual no PowerShell
 cd "C:\Users\Luis Camargo\Desktop\Logistic_Datalake"
 .venv\Scripts\Activate.ps1
+```
 
-2️⃣ — Subir infraestrutura completa
+### 2️⃣ — Subir a infraestrutura completa
+
+Utilize o Docker Compose para iniciar todos os serviços (Airflow, MinIO, PostgreSQL):
+
+```bash
 docker-compose up -d
+```
 
-3️⃣ — Acessar interfaces
-| Serviço           | URL                                            | Login padrão                    |
-| ----------------- | ---------------------------------------------- | ------------------------------- |
-|       Airflow UI  | [http://localhost:8080](http://localhost:8080) | `daxlog123` / `daxlog123`       |
-|     MinIO Console | [http://localhost:9001](http://localhost:9001) | `daxlog123` / `daxlog123`       |
-|     PostgreSQL    | localhost:5432                                 | DB: `gold_dw` / user: `airflow` |
+### 3️⃣ — Acessar as interfaces
 
-🧮 Qualidade de Dados — Soda Core
+| Serviço | URL | Login Padrão |
+|:---|:---|:---|
+| **Airflow UI** | [http://localhost:8080](https://www.google.com/search?q=http://localhost:8080) | `daxlog123` / `daxlog123` |
+| **MinIO Console** | [http://localhost:9001](https://www.google.com/search?q=http://localhost:9001) | `daxlog123` / `daxlog123` |
+| **PostgreSQL** | `localhost:5432` | DB: `gold_dw` / User: `airflow` |
 
-Após a camada BRONZE, os dados passam por validações automáticas de:
-Consistência de schema
-Campos nulos ou duplicados
-Regras de negócio definidas
-Executar manualmente scan local: 
+---
+
+## 📊 Qualidade de Dados — Soda Core
+
+Após a ingestão na camada BRONZE, o Soda Core executa validações automáticas:
+
+* Consistência de *schema*
+* Verificação de campos nulos ou duplicados
+* Aplicação de regras de negócio customizadas
+
+**Exemplo de execução manual de scan:**
+
+```bash
 soda scan -d postgres -c soda/config.yml soda/checks.yml
+```
 
-📈 Futuro & Extensões
+---
 
-Integração com dbt-core para transformação SQL modular
-Deploy remoto em Azure, AWS ou GCP
-Streaming de dados (Kafka) e monitoramento (Grafana/Prometheus) 
+## 📈 Futuro e Extensões
 
+Este projeto é modular e possui potencial para as seguintes evoluções:
 
-💼 Autor
-<h4>Luis Henrique Camargo — Especialista em Logística e Engenharia de Dados</h4> <p align="center"> <a href="https://www.linkedin.com/in/luisespecialista/" target="_blank"> <img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white" alt="LinkedIn"/> </a> <a href="mailto:especialista.luiscamargo@gmail.com"> <img src="https://img.shields.io/badge/Email-especialista.luiscamargo%40gmail.com-red?logo=gmail&logoColor=white" alt="Email"/> </a> <a href="https://wa.me/5511940880735"> <img src="https://img.shields.io/badge/WhatsApp-Contato-brightgreen?logo=whatsapp&logoColor=white" alt="WhatsApp"/> </a> </p>
+* Integração com **dbt-core** para modelagem SQL moderna na camada SILVER/GOLD.
+* *Deploy* remoto em ambientes corporativos (*cloud* como Azure, AWS, GCP).
+* Adição de camadas Streaming (**Kafka**) e Monitoring (**Grafana/Prometheus**).
 
-💡 “Transformar dados em inteligência e operações em vantagem competitiva.”
+---
+
+## 📜 Licença
+
+MIT License — uso interno para demonstração e aprendizado.
