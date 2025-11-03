@@ -1,8 +1,17 @@
-data_source postgres_daxlog:
+data_source postgres_docker:
   type: postgres
   connection:
-    host: postgres          # POSTGRES_HOST (nome do serviço no docker-compose)
-    port: 5432              # POSTGRES_PORT
-    database: airflow       # POSTGRES_DB
-    username: daxlog123     # POSTGRES_USER
-    password: daxlog123     # POSTGRES_PASSWORD
+    host: postgres         # Host para uso INTERNO no Airflow/Docker Compose (funciona no Docker)
+    port: 5432
+    database: airflow      # Corrigido para 'airflow', onde as tabelas GOLD estão.
+    username: daxlog123
+    password: daxlog123
+
+data_source postgres_local:
+  type: postgres
+  connection:
+    host: localhost        # Host para uso EXTERNO no Terminal/VS Code (funciona no seu PC)
+    port: 5432
+    database: airflow      # Corrigido para 'airflow', onde as tabelas GOLD estão.
+    username: daxlog123
+    password: daxlog123
