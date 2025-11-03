@@ -48,6 +48,12 @@ Montar como projetos, validar e executar pipelines de Data Lake corporativos, pe
       │   GOLD     │  ← Data Warehouse analítico
       └────────────┘
 
+## Imagens 
+
+<img width="1782" height="806" alt="image" src="https://github.com/user-attachments/assets/1e866707-a010-4344-b7cd-686cf59ae317" />
+
+
+
 ## ⚙️ Técnica de Pilha
 
 | Componente | Função Principal | Detalhes Técnicos |
