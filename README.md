@@ -50,7 +50,19 @@ Montar como projetos, validar e executar pipelines de Data Lake corporativos, pe
 
 ## Imagens 
 
+Estruta do Projeto 
 <img width="1782" height="806" alt="image" src="https://github.com/user-attachments/assets/1e866707-a010-4344-b7cd-686cf59ae317" />
+
+Docker container isolados 
+<img width="1463" height="351" alt="image" src="https://github.com/user-attachments/assets/2a8cacab-f380-430c-89b3-fbb98e0eecdc" />
+Docker Desktop 
+<img width="1822" height="751" alt="image" src="https://github.com/user-attachments/assets/24fce3ce-3437-4bad-9880-fdcddeade7bd" />
+Minio - S3
+<img width="1912" height="967" alt="image" src="https://github.com/user-attachments/assets/394abe59-cc22-4265-84cd-8e84d57dcc2e" />
+Airflow - Dags 
+<img width="1905" height="933" alt="image" src="https://github.com/user-attachments/assets/24347582-c742-4d38-8ddf-2a00aa81c918" /> 
+Pgadmin - Postgrees - Camada Gold 
+<img width="1917" height="981" alt="image" src="https://github.com/user-attachments/assets/6db9a67e-f87b-4dc1-b9a0-bb47681f31a8" />
 
 
 
