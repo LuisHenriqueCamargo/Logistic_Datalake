@@ -48,21 +48,22 @@ Montar como projetos, validar e executar pipelines de Data Lake corporativos, pe
       │   GOLD     │  ← Data Warehouse analítico
       └────────────┘
 
-## Imagens 
+## ⚙️ Provas Visuais da Execução
+Orquestração e Pipeline (Airflow)
 
-Estruta do Projeto 
-<img width="1782" height="806" alt="image" src="https://github.com/user-attachments/assets/1e866707-a010-4344-b7cd-686cf59ae317" />
+ O Airflow gerencia e automatiza a execução de cada estágio (RAW, BRONZE, SILVER, GOLD), garantindo a confiabilidade do pipeline.
+<img width="1888" height="971" alt="image" src="https://github.com/user-attachments/assets/90967efb-d96a-4fa7-87ee-099e12750baf" /> 
 
-Docker container isolados 
-<img width="1463" height="351" alt="image" src="https://github.com/user-attachments/assets/2a8cacab-f380-430c-89b3-fbb98e0eecdc" />
-Docker Desktop 
-<img width="1822" height="751" alt="image" src="https://github.com/user-attachments/assets/24fce3ce-3437-4bad-9880-fdcddeade7bd" />
-Minio - S3
-<img width="1912" height="967" alt="image" src="https://github.com/user-attachments/assets/394abe59-cc22-4265-84cd-8e84d57dcc2e" />
-Airflow - Dags 
-<img width="1905" height="933" alt="image" src="https://github.com/user-attachments/assets/24347582-c742-4d38-8ddf-2a00aa81c918" /> 
-Pgadmin - Postgrees - Camada Gold 
-<img width="1917" height="981" alt="image" src="https://github.com/user-attachments/assets/6db9a67e-f87b-4dc1-b9a0-bb47681f31a8" />
+Data Lake Storage (MinIO)
+
+Utilização do MinIO para simular um S3, garantindo o armazenamento imutável e particionado das camadas BRONZE e SILVER.
+<img width="1913" height="985" alt="image" src="https://github.com/user-attachments/assets/dd1ad11c-8885-463d-bd92-727170b43511" /> 
+
+Resultado Final (Camada GOLD)
+
+A camada GOLD contém os dados modelados e agregados, prontos para consumo por ferramentas de BI, comprovando a entrega final do projeto.
+<img width="1918" height="1027" alt="image" src="https://github.com/user-attachments/assets/59df0de0-eabf-44d3-9477-edbd78e6104a" />
+
 
 
 
@@ -113,7 +114,11 @@ cd "C:\Users\Luis Camargo\Desktop\Logistic_Datalake"
 Utilize o Docker Compose para iniciar todos os serviços (Airflow, MinIO, PostgreSQL):
 
 ```bash
-docker-compose up -d
+docker-compose up -d 
+
+<img width="1458" height="350" alt="image" src="https://github.com/user-attachments/assets/2d246e63-6261-4110-84b8-2ab695c6de51" />
+
+
 ```
 
 ### 3️⃣ — Acessar as interfaces
@@ -124,7 +129,10 @@ docker-compose up -d
 | **MinIO Console** | [http://localhost:9001](https://www.google.com/search?q=http://localhost:9001) | `daxlog123` / `daxlog123` |
 | **PostgreSQL** | `localhost:5432` | DB: `gold_dw` / User: `airflow` |
 
----
+--- 
+
+<img width="1908" height="808" alt="image" src="https://github.com/user-attachments/assets/b11731f6-48f3-479d-99a7-b82c87f29f3c" />
+
 
 ## 📊 Qualidade de Dados — Soda Core
 
