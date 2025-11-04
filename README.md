@@ -114,12 +114,11 @@ cd "C:\Users\Luis Camargo\Desktop\Logistic_Datalake"
 Utilize o Docker Compose para iniciar todos os serviços (Airflow, MinIO, PostgreSQL):
 
 ```bash
-docker-compose up -d 
-
-<img width="1458" height="350" alt="image" src="https://github.com/user-attachments/assets/2d246e63-6261-4110-84b8-2ab695c6de51" />
-
+docker-compose up -d
 
 ```
+<img width="1458" height="350" alt="image" src="https://github.com/user-attachments/assets/2d246e63-6261-4110-84b8-2ab695c6de51" /> 
+
 
 ### 3️⃣ — Acessar as interfaces
 
@@ -130,6 +129,8 @@ docker-compose up -d
 | **PostgreSQL** | `localhost:5432` | DB: `gold_dw` / User: `airflow` |
 
 --- 
+
+
 
 <img width="1908" height="808" alt="image" src="https://github.com/user-attachments/assets/b11731f6-48f3-479d-99a7-b82c87f29f3c" />
 
