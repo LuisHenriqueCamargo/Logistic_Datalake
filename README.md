@@ -26,27 +26,11 @@ Montar como projetos, validar e executar pipelines de Data Lake corporativos, pe
 
 ## 🏗️ Arquitetura
 
-      ┌────────────┐
-      │   RAW      │  ← Dados brutos (CSV, JSON, APIs, etc.)
-      └─────┬──────┘
-            │
-     Ingestão (Airflow + Python)
-            │
-      ┌─────▼──────┐
-      │  BRONZE    │  ← Padronização, formatação, Parquet
-      └─────┬──────┘
-            │
-     Validação (Soda Core)
-            │
-      ┌─────▼──────┐
-      │  SILVER    │  ← Dados refinados e prontos para modelagem
-      └─────┬──────┘
-            │
-     Agregações / SQL puro (PostgreSQL)
-            │
-      ┌─────▼──────┐
-      │   GOLD     │  ← Data Warehouse analítico
-      └────────────┘
+
+
+ ![1732023052836](https://github.com/user-attachments/assets/7e301022-c502-4104-948f-c9c55eb3d189)
+
+
 
 ## ⚙️ Provas Visuais da Execução
 Orquestração e Pipeline (Airflow)
